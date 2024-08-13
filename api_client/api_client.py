@@ -2,8 +2,8 @@
 import requests
 
 class APIClient:
-    def __init__(self, base_url = "https://query.idleclans.com/api"):
-        self.base_url = base_url
+    def __init__(self):
+        self.base_url = "https://query.idleclans.com/api"
 
     def _get_headers(self):
         return {
@@ -23,8 +23,11 @@ class APIClient:
             response (requests.Response): The response object returned by the GET request.
         """
         try:
-            response = requests.get(f'{self.base_url}/{endpoint}', params=params, headers=headers or self._get_headers())
+            headers = headers if headers else self._get_headers()
+            response = requests.get(f'{self.base_url}/{endpoint}', params=params, headers=headers)
             response.raise_for_status()  # Raise an exception for HTTP errors
+            if headers['Content-Type'] == 'application/json':
+                return response.json()
             return response
         except requests.exceptions.HTTPError as http_err:
             print(f"HTTP error occurred: {http_err}")
