@@ -1,4 +1,14 @@
 <!-- template by: https://github.com/othneildrew/Best-README-Template/blob/main/README.md77 -->
+<a id="readme-top"></a>
+
+
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![MIT License][license-shield]][license-url] -->
 
 
 
@@ -126,7 +136,7 @@ This guide will help you install and set up the Python project for Idle Clans Pr
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency.git
    ```
 2. **Navigate to the project directory**:
    ```sh
@@ -174,6 +184,19 @@ I would like to acknowledge the following tools and libraries that made this pro
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/Lyon-K/Idle-Clans-Economy-Efficiency.svg?style=for-the-badge
+[contributors-url]: https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Lyon-K/Idle-Clans-Economy-Efficiency.svg?style=for-the-badge
+[forks-url]: https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency/network/members
+[stars-shield]: https://img.shields.io/github/stars/Lyon-K/Idle-Clans-Economy-Efficiency.svg?style=for-the-badge
+[stars-url]: https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Lyon-K/Idle-Clans-Economy-Efficiency.svg?style=for-the-badge
+[issues-url]: https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency/issues
+[license-shield]: https://img.shields.io/github/license/Lyon-K/Idle-Clans-Economy-Efficiency.svg?style=for-the-badge
+[license-url]: https://github.com/Lyon-K/Idle-Clans-Economy-Efficiency/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/lyonk
+
 [Python.org]: https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [Python-url]: https://www.python.org/
 [IdleClans.com]: https://img.shields.io/badge/Idle%20Clans%20API-282C34?style=for-the-badge
