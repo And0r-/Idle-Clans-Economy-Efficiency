@@ -152,7 +152,7 @@ This guide will help you install and set up the Python project for Idle Clans Pr
    Run the program and it will calculate the best items for efficiency
 
    ```sh
-   python run.py
+   python main.py
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
