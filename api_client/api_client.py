@@ -24,6 +24,8 @@ class APIClient:
         """
         try:
             headers = headers if headers else self._get_headers()
+            if headers and not headers['Content-Type']:
+                headers['Content-Type'] = self._get_headers()['Content-Type']
             response = requests.get(f'{self.base_url}/{endpoint}', params=params, headers=headers)
             response.raise_for_status()  # Raise an exception for HTTP errors
             if headers['Content-Type'] == 'application/json':
