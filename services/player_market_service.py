@@ -1,4 +1,4 @@
-from api_client.api_client import APIClient
+from services import APIClient
 
 # This class contains all PlayerMarket API
 # https://query.idleclans.com/api-docs/index.html#tag/PlayerMarket
