@@ -32,7 +32,7 @@ class ChatService:
         Returns:
             list: A list of chat messages from the selected channels.
         """
-        endpoint = f"{self.api_class}/clan-logs/{name}"
+        endpoint = f"{self.api_class}/recent"
         params = {}
         if generalDisabled:
             params.generalDisabled = generalDisabled
