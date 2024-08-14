@@ -1,14 +1,13 @@
 # Doc = "https://query.idleclans.com/api-docs/index.html"
 import requests
 
+
 class APIClient:
     def __init__(self):
         self.base_url = "https://query.idleclans.com/api"
 
     def _get_headers(self):
-        return {
-            'Content-Type': 'application/json'
-        }
+        return {"Content-Type": "application/json"}
 
     def get(self, endpoint, params=None, headers=None):
         """
@@ -24,11 +23,13 @@ class APIClient:
         """
         try:
             headers = headers if headers else self._get_headers()
-            if headers and not headers['Content-Type']:
-                headers['Content-Type'] = self._get_headers()['Content-Type']
-            response = requests.get(f'{self.base_url}/{endpoint}', params=params, headers=headers)
+            if headers and not headers["Content-Type"]:
+                headers["Content-Type"] = self._get_headers()["Content-Type"]
+            response = requests.get(
+                f"{self.base_url}/{endpoint}", params=params, headers=headers
+            )
             response.raise_for_status()  # Raise an exception for HTTP errors
-            if headers and headers['Content-Type'] == 'application/json':
+            if headers and headers["Content-Type"] == "application/json":
                 return response.json()
             return response
         except requests.exceptions.HTTPError as http_err:

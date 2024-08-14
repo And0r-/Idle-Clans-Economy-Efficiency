@@ -10,13 +10,12 @@ class ChatService:
 
     def get_chat_recent(
         self,
-        name: str,
-        generalDisabled: bool = False,
-        tradeDisabled: bool = False,
-        helpDisabled: bool = False,
-        clanHubDisabled: bool = False,
-        combatLFGDisabled: bool = False,
-        raidLFGDisabled: bool = False,
+        general_disabled: bool = False,
+        trade_disabled: bool = False,
+        help_disabled: bool = False,
+        clan_hub_disabled: bool = False,
+        combat_lfg_disabled: bool = False,
+        raid_lfg_disabled: bool = False,
     ):
         """
         Retrieves the public chat history for various channels.
@@ -33,17 +32,12 @@ class ChatService:
             list: A list of chat messages from the selected channels.
         """
         endpoint = f"{self.api_class}/recent"
-        params = {}
-        if generalDisabled:
-            params.generalDisabled = generalDisabled
-        if tradeDisabled:
-            params.tradeDisabled = tradeDisabled
-        if helpDisabled:
-            params.helpDisabled = helpDisabled
-        if clanHubDisabled:
-            params.clanHubDisabled = clanHubDisabled
-        if combatLFGDisabled:
-            params.combatLFGDisabled = combatLFGDisabled
-        if raidLFGDisabled:
-            params.raidLFGDisabled = raidLFGDisabled
+        params = {
+            "generalDisabled": general_disabled,
+            "tradeDisabled": trade_disabled,
+            "helpDisabled": help_disabled,
+            "clanHubDisabled": clan_hub_disabled,
+            "combatLFGDisabled": combat_lfg_disabled,
+            "raidLFGDisabled": raid_lfg_disabled,
+        }
         return self.api_client.get(endpoint, params=params)

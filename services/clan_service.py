@@ -8,7 +8,7 @@ class ClanService:
         self.api_client = api_client
         self.api_class = "Clan"
 
-    def get_items_prices_history(self, name, skip: int = 0, limit: int = 100):
+    def get_logs_clan(self, name, skip: int = 0, limit: int = 100):
         """
         Retrieves the logs for a specific clan.
 
@@ -18,13 +18,17 @@ class ClanService:
             limit (int, optional): The maximum number of logs to retrieve. Defaults to 100.
 
         Returns:
-            list: A list of logs related to the specified clan.
+            list: A list of dictionaries, where each dictionary contains:
+                - 'clanName': string or null
+                - 'memberUsername': string or null
+                - 'message': string or null
+                - 'timestamp': string (date-time)
         """
         endpoint = f"{self.api_class}/logs/clan/{name}"
         params = {"skip": skip, "limit": limit}
         return self.api_client.get(endpoint, params=params)
 
-    def get_items_prices_history(
+    def get_player_logs_within_clan(
         self, clan_name: str, player_name: str, skip: int = 0, limit: int = 100
     ):
         """
@@ -37,13 +41,17 @@ class ClanService:
             limit (int, optional): The maximum number of logs to retrieve. Defaults to 100.
 
         Returns:
-            list: A list of logs related to the specified player within the clan.
+            list: A list of dictionaries where each dictionary contains:
+                - 'clanName': string or null
+                - 'memberUsername': string or null
+                - 'message': string or null
+                - 'timestamp': string (date-time)
         """
         endpoint = f"{self.api_class}/logs/clan/{clan_name}/{player_name}"
         params = {"skip": skip, "limit": limit}
         return self.api_client.get(endpoint, params=params)
 
-    def get_items_prices_history(self, clan_name: str):
+    def get_recruitment(self, clan_name: str):
         """
         Retrieves the recruitment information for a specific clan.
 
@@ -51,13 +59,26 @@ class ClanService:
             clanName (str): The name of the clan.
 
         Returns:
-            dict: A dictionary containing the recruitment information of the specified clan.
+            dict: A dictionary containing:
+                - 'clanName': string or null
+                - 'activityScore': float
+                - 'minimumTotalLevelRequired': integer
+                - 'memberlist': list of objects or null
+                - 'memberCount': integer
+                - 'isRecruiting': boolean
+                - 'language': string or null
+                - 'category': string or null
+                - 'serializedSkills': string or null
+                - 'serializedUpgrades': string or null
+                - 'recruitmentMessage': string or null
+                - 'houseId': integer
+
         """
 
         endpoint = f"{self.api_class}/recruitment/{clan_name}"
         return self.api_client.get(endpoint)
 
-    def get_items_prices_history(self, clan_query_info_json: str = "{}"):
+    def get_most_active(self, clan_query_info_json: str = "{}"):
         """
         Retrieves the most active guilds based on the provided query parameters.
 
@@ -65,7 +86,19 @@ class ClanService:
             clanQueryInfoJson (str, optional): JSON string containing query parameters. Defaults to "{}".
 
         Returns:
-            list: A list of the most active guilds based on the provided query parameters.
+            dict: A dictionary with the following keys and types:
+                - 'clanName': string or null
+                - 'activityScore': number (float)
+                - 'minimumTotalLevelRequired': integer
+                - 'memberlist': array of objects or null
+                - 'memberCount': integer
+                - 'isRecruiting': boolean
+                - 'language': string or null
+                - 'category': string or null
+                - 'serializedSkills': string or null
+                - 'serializedUpgrades': string or null
+                - 'recruitmentMessage': string or null
+                - 'houseId': integer
         """
 
         endpoint = f"{self.api_class}/most-active"
