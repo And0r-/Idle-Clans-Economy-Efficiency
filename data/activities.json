@@ -1,107 +1,265 @@
 {
-    "raids": {
-
+  "raids": {},
+  "combat": {},
+  "crafting": {},
+  "plundering": {},
+  "woodcutting": {
+    "spruce": {
+      "duration": 3.0,
+      "cost": []
     },
-    "combat": {
-
+    "pine": {
+      "duration": 5.0,
+      "cost": []
     },
-    "crafting": {
-
+    "oak": {
+      "duration": 6.0,
+      "cost": []
     },
-    "plundering": {
-
+    "maple": {
+      "duration": 6.5,
+      "cost": []
     },
-    "woodcutting": {
-
+    "teak": {
+      "duration": 8.0,
+      "cost": []
     },
-    "fishing": {
-        "duration": {
-            "piranha": 5.2,
-            "perch": 7.5,
-            "mackerel": 9.0,
-            "cod": 12.0,
-            "trout": 9.0,
-            "salmon": 13.5,
-            "carp": 9.5,
-            "zander": 15.0,
-            "pufferfish": 18.8,
-            "anglerfish": 30.0,
-            "tuna": 45.0
-        }
+    "chestnut": {
+      "duration": 10.0,
+      "cost": []
     },
-    "mining": {
-        "duration": {
-            "copper ore":3.0,
-            "tin ore":3.0,
-            "iron ore": 4.5,
-            "silver ore": 6.0,
-            "coal ore": 7.5,
-            "gold ore": 21.0,
-            "platinum ore": 18.0,
-            "meteorite ore": 26.0,
-            "diamond ore": 29.5,
-            "titanium ore": 35.0
-        }
+    "mahogany": {
+      "duration": 12.5,
+      "cost": []
     },
-    "smithing": {
-        "smelting": {
-            "duration": {
-                "bronze bar": 3.0,
-                "iron bar": 5.0,
-                "silver bar": 6.0,
-                "steel bar": 6.5,
-                "gold bar": 8.0,
-                "platinum bar": 12.0,
-                "meteorite bar": 20.0,
-                "diamond bar": 22.0,
-                "titanium bar": 30.0,
-                "astronomical bar": 60.0
-            }
-        }
+    "redwood": {
+      "duration": 17.5,
+      "cost": []
     },
-    "cooking": {
-        "duration": {
-            "piranha": 3.0,
-            "perch": 3.5,
-            "mackerel": 4.0,
-            "cod": 4.5,
-            "trout": 5.0,
-            "salmon": 6.0,
-            "carp": 7.5,
-            "zander": 10.0,
-            "pufferfish": 12.5,
-            "anglerfish": 17.5,
-            "tuna": 26.2
-        }
-        
-    },
-    "enchanting": {
-
-    },
-    "foraging": {
-        "duration": {
-            "nettle": 6.0,
-            "kiwi fruit": 7.0,
-            "onion": 7.5,
-            "magical flex": 8.0,
-            "blueberries": 8.0,
-            "enchanted flex": 8.5,
-            "porcini": 9.0,
-            "cursed flex": 10.0,
-            "seaweed": 12.5
-        }
-    },
-    "farming": {
-
-    },
-    "brewing": {
-
-    },
-    "carpentry": {
-
-    },
-    "agility": {
-
+    "magical": {
+      "duration": 20.0,
+      "cost": []
     }
+  },
+  "fishing": {
+    "piranha": {
+      "duration": 5.2,
+      "cost": []
+    },
+    "perch": {
+      "duration": 7.5,
+      "cost": []
+    },
+    "mackerel": {
+      "duration": 9.0,
+      "cost": []
+    },
+    "cod": {
+      "duration": 12.0,
+      "cost": []
+    },
+    "trout": {
+      "duration": 9.0,
+      "cost": []
+    },
+    "salmon": {
+      "duration": 13.5,
+      "cost": []
+    },
+    "carp": {
+      "duration": 9.5,
+      "cost": []
+    },
+    "zander": {
+      "duration": 15.0,
+      "cost": []
+    },
+    "pufferfish": {
+      "duration": 18.8,
+      "cost": []
+    },
+    "anglerfish": {
+      "duration": 30.0,
+      "cost": []
+    },
+    "tuna": {
+      "duration": 45.0,
+      "cost": []
+    }
+  },
+  "mining": {
+    "copper ore": {
+      "duration": 3.0,
+      "cost": []
+    },
+    "tin ore": {
+      "duration": 3.0,
+      "cost": []
+    },
+    "iron ore": {
+      "duration": 4.5,
+      "cost": []
+    },
+    "silver ore": {
+      "duration": 6.0,
+      "cost": []
+    },
+    "coal ore": {
+      "duration": 7.5,
+      "cost": []
+    },
+    "gold ore": {
+      "duration": 21.0,
+      "cost": []
+    },
+    "platinum ore": {
+      "duration": 18.0,
+      "cost": []
+    },
+    "meteorite ore": {
+      "duration": 26.0,
+      "cost": []
+    },
+    "diamond ore": {
+      "duration": 29.5,
+      "cost": []
+    },
+    "titanium ore": {
+      "duration": 35.0,
+      "cost": []
+    }
+  },
+  "smithing": {
+    "smelting": {
+      "bronze bar": {
+        "duration": 3.0,
+        "cost": [{ "name": "copper ore" }, { "name": "tin ore" }]
+      },
+      "iron bar": {
+        "duration": 5.0,
+        "cost": [{ "name": "iron ore" }]
+      },
+      "silver bar": {
+        "duration": 6.0,
+        "cost": [{ "name": "silver ore" }]
+      },
+      "steel bar": {
+        "duration": 6.5,
+        "cost": [{ "name": "coal ore" }]
+      },
+      "gold bar": {
+        "duration": 8.0,
+        "cost": [{ "name": "gold ore" }]
+      },
+      "platinum bar": {
+        "duration": 12.0,
+        "cost": [{ "name": "platinum ore" }]
+      },
+      "meteorite bar": {
+        "duration": 20.0,
+        "cost": [{ "name": "meteorite ore" }]
+      },
+      "diamond bar": {
+        "duration": 22.0,
+        "cost": [{ "name": "diamond ore" }]
+      },
+      "titanium bar": {
+        "duration": 30.0,
+        "cost": [{ "name": "titanium ore" }]
+      },
+      "astronomical bar": {
+        "duration": 60.0,
+        "cost": []
+      }
+    }
+  },
+  "cooking": {
+    "piranha": {
+      "duration": 3.0,
+      "cost": [{"name": "piranha"}]
+    },
+    "perch": {
+      "duration": 3.5,
+      "cost": [{"name": "perch"}]
+    },
+    "mackerel": {
+      "duration": 4.0,
+      "cost": [{"name": "mackerel"}]
+    },
+    "cod": {
+      "duration": 4.5,
+      "cost": [{"name": "cod"}]
+    },
+    "trout": {
+      "duration": 5.0,
+      "cost": [{"name": "trout"}]
+    },
+    "salmon": {
+      "duration": 6.0,
+      "cost": [{"name": "salmon"}]
+    },
+    "carp": {
+      "duration": 7.5,
+      "cost": [{"name": "carp"}]
+    },
+    "zander": {
+      "duration": 10.0,
+      "cost": [{"name": "zander"}]
+    },
+    "pufferfish": {
+      "duration": 12.5,
+      "cost": [{"name": "pufferfish"}]
+    },
+    "anglerfish": {
+      "duration": 17.5,
+      "cost": [{"name": "anglerfish"}]
+    },
+    "tuna": {
+      "duration": 26.2,
+      "cost": [{"name": "tuna"}]
+    }
+  },
+  "enchanting": {},
+  "foraging": {
+    "nettle": {
+      "duration": 6.0,
+      "cost": []
+    },
+    "kiwi fruit": {
+      "duration": 7.0,
+      "cost": []
+    },
+    "onion": {
+      "duration": 7.5,
+      "cost": []
+    },
+    "magical flex": {
+      "duration": 8.0,
+      "cost": []
+    },
+    "blueberries": {
+      "duration": 8.0,
+      "cost": []
+    },
+    "enchanted flex": {
+      "duration": 8.5,
+      "cost": []
+    },
+    "porcini": {
+      "duration": 9.0,
+      "cost": []
+    },
+    "cursed flex": {
+      "duration": 10.0,
+      "cost": []
+    },
+    "seaweed": {
+      "duration": 12.5,
+      "cost": []
+    }
+  },
+  "farming": {},
+  "brewing": {},
+  "carpentry": {},
+  "agility": {}
 }
-
