@@ -119,9 +119,9 @@ class PlayerMarketService:
             params.period = period
         if limit:
             params.limit = limit
-        return self.api_client.get(endpoint)
+        return self.api_client.get(endpoint, params=params)
 
-    def get_items_volume_history(self):
+    def get_items_volume_history(self, item_id=None, volume=None, timestamp=None):
         """
         Retrieves the top items by trade volume within a specified period.
 
@@ -138,4 +138,11 @@ class PlayerMarketService:
                 - 'timestamp' (str): The timestamp representing the end of the period for the volume calculation.
         """
         endpoint = f'{self.api_class}/items/volume/history'
-        return self.api_client.get(endpoint)
+        params = {}
+        if item_id:
+            params.item_id = item_id
+        if volume:
+            params.volume = volume
+        if timestamp:
+            params.timestamp = timestamp
+        return self.api_client.get(endpoint, params=params)
