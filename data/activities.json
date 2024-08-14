@@ -1,0 +1,107 @@
+{
+    "raids": {
+
+    },
+    "combat": {
+
+    },
+    "crafting": {
+
+    },
+    "plundering": {
+
+    },
+    "woodcutting": {
+
+    },
+    "fishing": {
+        "duration": {
+            "piranha": 5.2,
+            "perch": 7.5,
+            "mackerel": 9.0,
+            "cod": 12.0,
+            "trout": 9.0,
+            "salmon": 13.5,
+            "carp": 9.5,
+            "zander": 15.0,
+            "pufferfish": 18.8,
+            "anglerfish": 30.0,
+            "tuna": 45.0
+        }
+    },
+    "mining": {
+        "duration": {
+            "copper ore":3.0,
+            "tin ore":3.0,
+            "iron ore": 4.5,
+            "silver ore": 6.0,
+            "coal ore": 7.5,
+            "gold ore": 21.0,
+            "platinum ore": 18.0,
+            "meteorite ore": 26.0,
+            "diamond ore": 29.5,
+            "titanium ore": 35.0
+        }
+    },
+    "smithing": {
+        "smelting": {
+            "duration": {
+                "bronze bar": 3.0,
+                "iron bar": 5.0,
+                "silver bar": 6.0,
+                "steel bar": 6.5,
+                "gold bar": 8.0,
+                "platinum bar": 12.0,
+                "meteorite bar": 20.0,
+                "diamond bar": 22.0,
+                "titanium bar": 30.0,
+                "astronomical bar": 60.0
+            }
+        }
+    },
+    "cooking": {
+        "duration": {
+            "piranha": 3.0,
+            "perch": 3.5,
+            "mackerel": 4.0,
+            "cod": 4.5,
+            "trout": 5.0,
+            "salmon": 6.0,
+            "carp": 7.5,
+            "zander": 10.0,
+            "pufferfish": 12.5,
+            "anglerfish": 17.5,
+            "tuna": 26.2
+        }
+        
+    },
+    "enchanting": {
+
+    },
+    "foraging": {
+        "duration": {
+            "nettle": 6.0,
+            "kiwi fruit": 7.0,
+            "onion": 7.5,
+            "magical flex": 8.0,
+            "blueberries": 8.0,
+            "enchanted flex": 8.5,
+            "porcini": 9.0,
+            "cursed flex": 10.0,
+            "seaweed": 12.5
+        }
+    },
+    "farming": {
+
+    },
+    "brewing": {
+
+    },
+    "carpentry": {
+
+    },
+    "agility": {
+
+    }
+}
+
