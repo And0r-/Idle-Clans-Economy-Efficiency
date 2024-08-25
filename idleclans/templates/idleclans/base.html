@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'idleclans/style.css' %}" />
+    <script src="{% static 'idleclans/base.js' %}"></script>
+    <title>Idle Clans Tracker</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <header>
+        <nav class="wrapper">
+            <a href="/" class="navbar-brand">
+                <img id="logo-img" src="https://picsum.photos/200?random=1">
+                Idle Clans Tracker
+            </a>
+            <div class="feature-wrapper">
+                <a class="header-text">Economy</a>
+                <a class="header-text">Search</a>
+                <div id="username-wrapper">
+                    <a id="username" class="header-text">Username</a>
+                    <input type="text" id="username-field " class="header-text" style="display: none;" placeholder="username"></input>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="leaderboard-top" style="display: none;"></div>
+    <div class="fill-left">
+        <div style="position: fixed;"></div>
+    </div>
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="fill-right">
+        <div style="position: fixed;"></div>
+    </div>
+    <div class="leaderboard-bottom" style="display: none;"></div>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
