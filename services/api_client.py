@@ -21,6 +21,7 @@ class APIClient:
         Returns:
             response (requests.Response): The response object returned by the GET request.
         """
+        print(f"GET: {endpoint} waiting")
         try:
             headers = headers if headers else self._get_headers()
             if headers and not headers["Content-Type"]:
@@ -29,6 +30,7 @@ class APIClient:
                 f"{self.base_url}/{endpoint}", params=params, headers=headers
             )
             response.raise_for_status()  # Raise an exception for HTTP errors
+            print(f"GET: {endpoint} complete")
             if headers and headers["Content-Type"] == "application/json":
                 return response.json()
             return response

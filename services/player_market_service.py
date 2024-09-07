@@ -1,12 +1,31 @@
 from services import APIClient
 
+import time
+import math
+
 
 # This class contains all PlayerMarket API
 # https://query.idleclans.com/api-docs/index.html#tag/PlayerMarket
 class PlayerMarketService:
-    def __init__(self, api_client: APIClient):
+    def __init__(self, api_client: APIClient, priceFetchIntervalLimit=10):
         self.api_client = api_client
         self.api_class = "PlayerMarket"
+        self.lastPriceFetch = None
+        self.priceFetchIntervalLimit = priceFetchIntervalLimit
+
+    def _fetch_interval_check(self):
+        interval_condition = (
+            self.lastPriceFetch
+            and time.time() - self.lastPriceFetch >= self.priceFetchIntervalLimit
+        )
+        if interval_condition == False:
+            print(
+                f"Price fetched no more than {self.priceFetchIntervalLimit} seconds ago.\n"
+                f"Try again {self.priceFetchIntervalLimit - math.ceil(time.time() - self.lastPriceFetch)}s later."
+            )
+            return False
+        self.lastPriceFetch = time.time()
+        return True
 
     def get_items_prices_latest(
         self, item_id: int, include_average_price: bool = False
@@ -25,7 +44,8 @@ class PlayerMarketService:
         """
         endpoint = f"{self.api_class}/items/prices/latest/{item_id}"
         params = {"includeAveragePrice": include_average_price}
-        return self.api_client.get(endpoint, params=params)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint, params=params)
 
     def get_items_prices_latest_comprehensive(self, item_id: int):
         """
@@ -47,7 +67,8 @@ class PlayerMarketService:
             dict: A dictionary containing detailed price information for the specified item.
         """
         endpoint = f"{self.api_class}/items/prices/latest/comprehensive/{item_id}"
-        return self.api_client.get(endpoint)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint)
 
     def get_items_prices_latest(self, include_average_price: bool = False):
         """
@@ -63,7 +84,8 @@ class PlayerMarketService:
         """
         endpoint = f"{self.api_class}/items/prices/latest"
         params = {"includeAveragePrice": include_average_price}
-        return self.api_client.get(endpoint, params=params)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint, params=params)
 
     def get_items_prices_history(self, item_id: int, period: str = "1d"):
         """
@@ -79,7 +101,8 @@ class PlayerMarketService:
         """
         endpoint = f"{self.api_class}/items/prices/history/{item_id}"
         params = {"period": period}
-        return self.api_client.get(endpoint, params=params)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint, params=params)
 
     def get_items_prices_history_value(self, period: str = "1d", limit: int = 10):
         """
@@ -95,7 +118,8 @@ class PlayerMarketService:
         """
         endpoint = f"{self.api_class}/items/prices/history/value"
         params = {"period": period, "limit": limit}
-        return self.api_client.get(endpoint, params=params)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint, params=params)
 
     def get_items_volume_history(self, period: str = "1d", limit: int = 10):
         """
@@ -115,4 +139,5 @@ class PlayerMarketService:
         """
         endpoint = f"{self.api_class}/items/volume/history"
         params = {"period": period, "limit": limit}
-        return self.api_client.get(endpoint, params=params)
+        if self._fetch_interval_check():
+            return self.api_client.get(endpoint, params=params)
