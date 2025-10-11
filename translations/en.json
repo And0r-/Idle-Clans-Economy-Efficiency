@@ -1,0 +1,20 @@
+{
+  "items": {
+    "comment": "English item names (mostly keep original API keys)",
+    "spruce_log": "Spruce Log",
+    "iron_ore": "Iron Ore",
+    "coal": "Coal",
+    "copper_ore": "Copper Ore",
+    "tin_ore": "Tin Ore",
+    "bronze_ingot": "Bronze Ingot"
+  },
+  "categories": {
+    "comment": "English category names",
+    "Carpentry": "Carpentry",
+    "Mining": "Mining",
+    "Smithing": "Smithing",
+    "Crafting": "Crafting",
+    "Cooking": "Cooking",
+    "Farming": "Farming"
+  }
+}

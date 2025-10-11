@@ -50,24 +50,31 @@ missing_translations = {
     'categories': set()
 }
 
-# Translation maps - add translations here
-ITEM_TRANSLATIONS = {
-    'en': {},
-    'de': {
-        # Add German item translations here
-        # 'spruce_log': 'Fichtenholz',
-        # 'iron_ore': 'Eisenerz',
-    }
-}
+# Translation maps - loaded from JSON files
+ITEM_TRANSLATIONS = {}
+CATEGORY_TRANSLATIONS = {}
 
-CATEGORY_TRANSLATIONS = {
-    'en': {},
-    'de': {
-        # Add German category translations here
-        # 'Carpentry': 'Tischlerei',
-        # 'Mining': 'Bergbau',
-    }
-}
+def load_translations():
+    """Load translations from JSON files"""
+    global ITEM_TRANSLATIONS, CATEGORY_TRANSLATIONS
+
+    for locale in ['en', 'de']:
+        try:
+            with open(f'translations/{locale}.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                ITEM_TRANSLATIONS[locale] = data.get('items', {})
+                CATEGORY_TRANSLATIONS[locale] = data.get('categories', {})
+        except FileNotFoundError:
+            print(f"Warning: Translation file translations/{locale}.json not found")
+            ITEM_TRANSLATIONS[locale] = {}
+            CATEGORY_TRANSLATIONS[locale] = {}
+        except Exception as e:
+            print(f"Error loading translations for {locale}: {e}")
+            ITEM_TRANSLATIONS[locale] = {}
+            CATEGORY_TRANSLATIONS[locale] = {}
+
+# Load translations
+load_translations()
 
 # Initialize API Client
 api_client = APIClient()
@@ -365,6 +372,27 @@ def translations_needed():
             cat: f"# TODO: Translate '{cat}'" for cat in list(missing_translations['categories'])[:5]
         }
     })
+
+@app.route('/export-missing-translations')
+def export_missing_translations():
+    """Export missing translations as JSON for easy copy-paste"""
+    global missing_translations
+
+    export_data = {
+        "instructions": "Copy these into your translation files",
+        "items_to_add": {},
+        "categories_to_add": {}
+    }
+
+    # Add missing items with placeholder translations
+    for item in sorted(missing_translations['items']):
+        export_data["items_to_add"][item] = f"TODO: Translate '{item}'"
+
+    # Add missing categories with placeholder translations
+    for category in sorted(missing_translations['categories']):
+        export_data["categories_to_add"][category] = f"TODO: Translate '{category}'"
+
+    return jsonify(export_data)
 
 
 def start_scheduler():

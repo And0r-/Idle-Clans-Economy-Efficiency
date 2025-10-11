@@ -1,0 +1,20 @@
+{
+  "items": {
+    "comment": "German item translations - add as needed",
+    "spruce_log": "Fichtenholz",
+    "iron_ore": "Eisenerz",
+    "coal": "Kohle",
+    "copper_ore": "Kupfererz",
+    "tin_ore": "Zinnerz",
+    "bronze_ingot": "Bronzebarren"
+  },
+  "categories": {
+    "comment": "German category translations",
+    "Carpentry": "Tischlerei",
+    "Mining": "Bergbau",
+    "Smithing": "Schmiedekunst",
+    "Crafting": "Handwerk",
+    "Cooking": "Kochen",
+    "Farming": "Landwirtschaft"
+  }
+}
