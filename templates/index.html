@@ -145,6 +145,12 @@
 </head>
 <body>
     <div class="header">
+        <div style="position: absolute; top: 20px; right: 20px;">
+            <select id="languageSelect" onchange="changeLanguage()" style="padding: 8px; border-radius: 4px; border: 1px solid #bdc3c7; background: white; font-size: 14px;">
+                <option value="en">🇬🇧 English</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+        </div>
         <h1>🏆 {{ _('Idle Clans Profit Optimizer') }}</h1>
         <p>{{ _('Real-time market analysis for maximum efficiency') }}</p>
         <button class="refresh-btn" onclick="location.reload()">🔄 {{ _('Refresh View') }}</button>
@@ -267,5 +273,39 @@
             </p>
         </div>
     </div>
+
+    <script>
+        // Set current language in dropdown
+        function getCurrentLanguage() {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'language') {
+                    return value;
+                }
+            }
+            return 'en'; // Default to English
+        }
+
+        // Set the dropdown to current language
+        document.getElementById('languageSelect').value = getCurrentLanguage();
+
+        // Change language function
+        function changeLanguage() {
+            const selectedLang = document.getElementById('languageSelect').value;
+
+            fetch(`/set-language/${selectedLang}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Reload page to apply new language
+                        location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error setting language:', error);
+                });
+        }
+    </script>
 </body>
 </html>

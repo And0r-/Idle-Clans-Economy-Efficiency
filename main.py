@@ -2,7 +2,7 @@ import json
 import time
 import threading
 from datetime import datetime
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, make_response
 from flask_babel import Babel, gettext, ngettext, lazy_gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 from services import (
@@ -33,9 +33,14 @@ babel = Babel()
 
 def get_locale():
     """Select locale based on request"""
-    # 1. Check if user explicitly selected a language (future feature)
-    # 2. Check browser Accept-Language header
-    return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or 'en'
+    # 1. Check if user explicitly selected a language via cookie
+    if 'language' in request.cookies:
+        lang = request.cookies.get('language')
+        if lang in app.config['LANGUAGES']:
+            return lang
+
+    # 2. Default to English (not browser detection)
+    return 'en'
 
 # Initialize Babel with app and locale selector
 babel.init_app(app, locale_selector=get_locale)
@@ -393,6 +398,17 @@ def export_missing_translations():
         export_data["categories_to_add"][category] = f"TODO: Translate '{category}'"
 
     return jsonify(export_data)
+
+@app.route('/set-language/<language>')
+def set_language(language):
+    """Set user language preference via cookie"""
+    if language not in app.config['LANGUAGES']:
+        return jsonify({'error': 'Language not supported'}), 400
+
+    response = make_response(jsonify({'status': 'success', 'language': language}))
+    # Set cookie for 1 year
+    response.set_cookie('language', language, max_age=60*60*24*365)
+    return response
 
 
 def start_scheduler():
