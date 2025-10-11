@@ -33,13 +33,17 @@ babel = Babel()
 
 def get_locale():
     """Select locale based on request"""
-    # 1. Check if user explicitly selected a language via cookie
-    if 'language' in request.cookies:
-        lang = request.cookies.get('language')
-        if lang in app.config['LANGUAGES']:
-            return lang
+    try:
+        # 1. Check if user explicitly selected a language via cookie
+        if request and hasattr(request, 'cookies') and 'language' in request.cookies:
+            lang = request.cookies.get('language')
+            if lang in app.config['LANGUAGES']:
+                return lang
+    except RuntimeError:
+        # Handle case when called outside request context (e.g., background scheduler)
+        pass
 
-    # 2. Default to English (not browser detection)
+    # 2. Default to English
     return 'en'
 
 # Initialize Babel with app and locale selector
@@ -271,17 +275,18 @@ def load_and_calculate_data(collect_missing_translations=False):
             all_tasks = []
 
             for category in task_service.categories:
+                # Use English for background job, avoid translation calls that need request context
                 category_data = {
-                    'name': translate_category_name(category.name, collect_missing_translations),
+                    'name': category.name,  # Use raw name for background job
                     'raw_name': category.name,  # Keep original for debugging
                     'tasks_with_data': []
                 }
 
                 for task in category.tasks:
                     if calculateEfficiency(task, verbose=False, collect_missing=collect_missing_translations):
-                        task.category_name = translate_category_name(category.name, collect_missing_translations)
-                        # Add translated names for display
-                        task.display_name = translate_item_name(task.name, collect_missing_translations)
+                        task.category_name = category.name  # Use raw name for background job
+                        # Use raw name for background job
+                        task.display_name = task.name
                         category_data['tasks_with_data'].append(task)
                         all_tasks.append(task)
 
@@ -331,6 +336,17 @@ def index():
 
     with data_lock:
         data_copy = cached_data.copy() if cached_data else {}
+
+    # Apply translations to the data copy for current user's language
+    if data_copy and 'categories' in data_copy:
+        for category in data_copy['categories']:
+            # Translate category name for current user
+            category['name'] = translate_category_name(category['raw_name'], collect_missing)
+
+            # Translate task names for current user
+            for task in category['tasks_with_data']:
+                task.display_name = translate_item_name(task.name, collect_missing)
+                task.category_name = translate_category_name(category['raw_name'], collect_missing)
 
     # Make translation functions available in template
     data_copy['_'] = _
