@@ -145,32 +145,32 @@
 </head>
 <body>
     <div class="header">
-        <h1>🏆 Idle Clans Profit Optimizer</h1>
-        <p>Real-time market analysis for maximum efficiency</p>
-        <button class="refresh-btn" onclick="location.reload()">🔄 Refresh View</button>
+        <h1>🏆 {{ _('Idle Clans Profit Optimizer') }}</h1>
+        <p>{{ _('Real-time market analysis for maximum efficiency') }}</p>
+        <button class="refresh-btn" onclick="location.reload()">🔄 {{ _('Refresh View') }}</button>
     </div>
 
     <div class="summary">
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number">{{ total_categories }}</div>
-                <div class="stat-label">Categories</div>
+                <div class="stat-label">{{ _('Categories') }}</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">{{ total_tasks }}</div>
-                <div class="stat-label">Total Tasks</div>
+                <div class="stat-label">{{ _('Total Tasks') }}</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">{{ profitable_tasks }}</div>
-                <div class="stat-label">Profitable Tasks</div>
+                <div class="stat-label">{{ _('Profitable Tasks') }}</div>
             </div>
         </div>
 
         <div class="top-tasks">
-            <h3>🥇 Top 5 Most Profitable Tasks</h3>
+            <h3>🥇 {{ _('Top 5 Most Profitable Tasks') }}</h3>
             {% for task in top_tasks[:5] %}
             <div>
-                <strong>{{ loop.index }}. {{ task.name }}</strong> -
+                <strong>{{ loop.index }}. {{ task.display_name or task.name }}</strong> -
                 <span class="profit-positive">{{ "%.3f"|format(task.gold_efficiency) }} gold/sec</span>
                 ({{ task.category_name }})
             </div>
@@ -186,19 +186,19 @@
         <table>
             <thead>
                 <tr>
-                    <th>Task Name</th>
-                    <th>Revenue</th>
-                    <th>Costs</th>
-                    <th>Net Profit</th>
-                    <th>Time (sec)</th>
-                    <th>Profit/sec</th>
-                    <th>XP/sec</th>
+                    <th>{{ _('Task Name') }}</th>
+                    <th>{{ _('Revenue') }}</th>
+                    <th>{{ _('Costs') }}</th>
+                    <th>{{ _('Net Profit') }}</th>
+                    <th>{{ _('Time (sec)') }}</th>
+                    <th>{{ _('Profit/sec') }}</th>
+                    <th>{{ _('XP/sec') }}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for task in category.tasks_with_data %}
                 <tr>
-                    <td><strong>{{ task.name }}</strong></td>
+                    <td><strong>{{ task.display_name or task.name }}</strong></td>
                     <td>{{ "%.2f"|format(task.revenue) }}</td>
                     <td class="tooltip" data-tooltip="{{ task.cost_tooltip }}">{{ "%.2f"|format(task.total_cost) }}</td>
                     <td>
@@ -226,13 +226,13 @@
             </tbody>
         </table>
         {% else %}
-        <div class="no-tasks">No profitable tasks found in this category</div>
+        <div class="no-tasks">{{ _('No profitable tasks found in this category') }}</div>
         {% endif %}
     </div>
     {% endfor %}
 
     <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
-        <p style="color: #7f8c8d; margin: 10px 0;">Last updated: {{ timestamp }}</p>
+        <p style="color: #7f8c8d; margin: 10px 0;">{{ _('Last updated') }}: {{ timestamp }}</p>
 
         <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
             <p style="color: #495057; font-size: 0.9em; margin: 5px 0;">
@@ -256,13 +256,13 @@
                 </a>
             </p>
             <p style="color: #7f8c8d; font-size: 0.85em; margin-top: 10px;">
-                Built with ❤️ for the Idle Clans community |
+                {{ _('Built with ❤️ for the Idle Clans community') }} |
                 <a href="https://query.idleclans.com/api-docs/index.html"
                    target="_blank"
                    style="color: #7f8c8d; text-decoration: none;"
                    onmouseover="this.style.textDecoration='underline'"
                    onmouseout="this.style.textDecoration='none'">
-                    API Docs
+                    {{ _('API Docs') }}
                 </a>
             </p>
         </div>

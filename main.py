@@ -2,7 +2,8 @@ import json
 import time
 import threading
 from datetime import datetime
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from flask_babel import Babel, gettext, ngettext, lazy_gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 from services import (
     APIClient,
@@ -18,6 +19,28 @@ from utils import AsciiUI
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# i18n Configuration
+app.config['LANGUAGES'] = {
+    'en': 'English',
+    'de': 'Deutsch'
+}
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+
+# Initialize Babel
+babel = Babel(app)
+
+# Create translation helper functions
+_ = gettext  # Standard gettext function
+_l = lazy_gettext  # Lazy gettext for form labels etc.
+
+@babel.localeselector
+def get_locale():
+    """Select locale based on request"""
+    # 1. Check if user explicitly selected a language (future feature)
+    # 2. Check browser Accept-Language header
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or 'en'
 
 # Initialize API Client
 api_client = APIClient()
@@ -134,24 +157,40 @@ def latest_prices_get_item(latest_prices, id):
 def create_cost_tooltip(costs, latest_prices):
     """Create a tooltip showing cost breakdown"""
     if not costs:
-        return "No materials required"
+        return _("No materials required")
 
-    tooltip_lines = ["Material Costs:"]
+    tooltip_lines = [_("Material Costs:")]
 
     for cost in costs:
         if cost.item:
             cost_item_price = latest_prices_get_item(latest_prices, cost.item.id)
+            # Translate item name (for now just use key, later we'll add translations)
+            item_name = translate_item_name(cost.item.name)
+
             if cost_item_price:
                 unit_price = cost_item_price["lowestSellPrice"]
                 total_cost = unit_price * cost.amount
-                tooltip_lines.append(f"• {cost.item.name}: {cost.amount}x @ {unit_price:.2f} = {total_cost:.2f} gold")
+                tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} = {total_cost:.2f} gold")
             else:
                 # Fallback to base value
                 unit_price = cost.item.base_value
                 total_cost = unit_price * cost.amount
-                tooltip_lines.append(f"• {cost.item.name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
+                tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
 
     return "\n".join(tooltip_lines)
+
+
+def translate_item_name(item_key):
+    """Translate item name - for now return key, later add proper translations"""
+    # TODO: Add item name translations here
+    # This will be where we map API keys to localized names
+    return item_key  # For now, just return the key
+
+
+def translate_category_name(category_key):
+    """Translate category name - for now return key, later add proper translations"""
+    # TODO: Add category name translations here
+    return category_key  # For now, just return the key
 
 
 def load_and_calculate_data():
@@ -171,13 +210,16 @@ def load_and_calculate_data():
 
             for category in task_service.categories:
                 category_data = {
-                    'name': category.name,
+                    'name': translate_category_name(category.name),
+                    'raw_name': category.name,  # Keep original for debugging
                     'tasks_with_data': []
                 }
 
                 for task in category.tasks:
                     if calculateEfficiency(task, verbose=False):
-                        task.category_name = category.name  # Add category name to task
+                        task.category_name = translate_category_name(category.name)
+                        # Add translated names for display
+                        task.display_name = translate_item_name(task.name)
                         category_data['tasks_with_data'].append(task)
                         all_tasks.append(task)
 
@@ -215,10 +257,15 @@ def index():
         print("⏳ Waiting for initial data load...")
         time.sleep(2)  # Give scheduler time to load data
         if not cached_data:
-            return "<h1>🔄 Loading data... Please refresh in a moment.</h1>"
+            return f"<h1>{_('Loading data... Please refresh in a moment.')}</h1>"
 
     with data_lock:
         data_copy = cached_data.copy() if cached_data else {}
+
+    # Make translation functions available in template
+    data_copy['_'] = _
+    data_copy['translate_item_name'] = translate_item_name
+    data_copy['translate_category_name'] = translate_category_name
 
     return render_template('index.html', **data_copy)
 
