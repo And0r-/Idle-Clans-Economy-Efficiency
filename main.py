@@ -242,12 +242,18 @@ def get_item_price(item_price_data, price_type='sell'):
         avg_price = item_price_data.get("averagePrice", None)
         if avg_price:
             return avg_price
-        # Fallback to instant if no average available
-        return get_item_price(item_price_data, price_type='sell' if price_type == 'sell' else 'buy')
+        # Fallback to instant prices if no average available
+        if price_type == 'sell':
+            return item_price_data.get("highestBuyPrice", 0)
+        else:
+            return item_price_data.get("lowestSellPrice", 0)
 
-    # For now, other strategies fallback to 1d average
+    # For now, other strategies fallback to instant prices
     # TODO: Implement 7d and 30d averages when we fetch comprehensive data
-    return get_item_price(item_price_data, price_type)
+    if price_type == 'sell':
+        return item_price_data.get("highestBuyPrice", 0)
+    else:
+        return item_price_data.get("lowestSellPrice", 0)
 
 
 def create_cost_tooltip(costs, latest_prices, collect_missing=False):
