@@ -108,6 +108,9 @@ def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 
     task.net_profit = net_profit
     task.xp_efficiency_calculation_time = time.time()
 
+    # Create tooltip for cost breakdown
+    task.cost_tooltip = create_cost_tooltip(task.costs or [], latest_prices)
+
     if verbose:
         # Print efficiency results for this task
         print(f"Task: {task.name}")
@@ -126,6 +129,29 @@ def latest_prices_get_item(latest_prices, id):
     for item in latest_prices:
         if item["itemId"] == id:
             return item
+
+
+def create_cost_tooltip(costs, latest_prices):
+    """Create a tooltip showing cost breakdown"""
+    if not costs:
+        return "No materials required"
+
+    tooltip_lines = ["Material Costs:"]
+
+    for cost in costs:
+        if cost.item:
+            cost_item_price = latest_prices_get_item(latest_prices, cost.item.id)
+            if cost_item_price:
+                unit_price = cost_item_price["lowestSellPrice"]
+                total_cost = unit_price * cost.amount
+                tooltip_lines.append(f"• {cost.item.name}: {cost.amount}x @ {unit_price:.2f} = {total_cost:.2f} gold")
+            else:
+                # Fallback to base value
+                unit_price = cost.item.base_value
+                total_cost = unit_price * cost.amount
+                tooltip_lines.append(f"• {cost.item.name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
+
+    return "\n".join(tooltip_lines)
 
 
 def load_and_calculate_data():
