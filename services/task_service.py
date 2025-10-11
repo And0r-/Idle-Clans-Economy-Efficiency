@@ -9,12 +9,14 @@ class TaskService:
         self.categories: list[TaskCategory] = []
 
         with open(file_path, "r") as json_file:
-            raw_text = json_file.readlines()
-            for i, line in enumerate(raw_text):
-                if line.strip()[:5] == '"_id"':
-                    raw_text.pop(i)
-                    # print("stripped invalid json at line:", i)
-            data = json.loads("".join(raw_text))
+            raw_text = json_file.read()
+            # Clean MongoDB export format
+            import re
+            # Remove ObjectId() wrapper
+            raw_text = re.sub(r'ObjectId\("([^"]+)"\)', r'"\1"', raw_text)
+            # Remove _id fields completely
+            raw_text = re.sub(r'^\s*"_id":\s*"[^"]*",?\s*\n', '', raw_text, flags=re.MULTILINE)
+            data = json.loads(raw_text)
 
             self.categories = [
                 TaskCategory(
@@ -79,11 +81,11 @@ class TaskItem:
         self.exp_reward = exp_reward
         self.item_amount = item_amount
         self.costs = costs
-        gold_efficiency = None
-        xp_efficiency = None
-        gold_efficiency_calculation_time = None
-        xp_efficiency_calculation_time = None
-        sold_as_base_price = False
+        self.gold_efficiency = None
+        self.xp_efficiency = None
+        self.gold_efficiency_calculation_time = None
+        self.xp_efficiency_calculation_time = None
+        self.sold_as_base_price = False
 
 
 class TaskCategory:
