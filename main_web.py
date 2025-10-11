@@ -16,7 +16,6 @@ from services import (
 )
 from utils import AsciiUI
 
-
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -130,106 +129,124 @@ def latest_prices_get_item(latest_prices, id):
 
 
 def load_and_calculate_data():
-    """Load market data and calculate efficiency for all tasks"""
+    """Load market data and calculate efficiency for all tasks - Background job"""
     global cached_data, last_update
 
-    print("Fetching market prices...")
-    fetchPrices()
+    try:
+        with data_lock:
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] 🔄 Fetching market prices...")
+            fetchPrices()
 
-    print(f"Analyzing {len(task_service.categories)} categories...")
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] 📊 Analyzing {len(task_service.categories)} categories...")
 
-    # Calculate efficiency for all tasks
-    categories_data = []
-    all_tasks = []
+            # Calculate efficiency for all tasks
+            categories_data = []
+            all_tasks = []
 
-    for category in task_service.categories:
-        print(f"Processing category: {category.name}")
-        category_data = {
-            'name': category.name,
-            'tasks_with_data': []
-        }
+            for category in task_service.categories:
+                category_data = {
+                    'name': category.name,
+                    'tasks_with_data': []
+                }
 
-        for task in category.tasks:
-            if calculateEfficiency(task, verbose=False):
-                task.category_name = category.name  # Add category name to task
-                category_data['tasks_with_data'].append(task)
-                all_tasks.append(task)
+                for task in category.tasks:
+                    if calculateEfficiency(task, verbose=False):
+                        task.category_name = category.name  # Add category name to task
+                        category_data['tasks_with_data'].append(task)
+                        all_tasks.append(task)
 
-        # Sort tasks by profit efficiency
-        category_data['tasks_with_data'].sort(key=lambda t: t.gold_efficiency, reverse=True)
-        categories_data.append(category_data)
+                # Sort tasks by profit efficiency
+                category_data['tasks_with_data'].sort(key=lambda t: t.gold_efficiency, reverse=True)
+                categories_data.append(category_data)
 
-    # Sort all tasks by profit efficiency
-    all_tasks.sort(key=lambda t: t.gold_efficiency, reverse=True)
+            # Sort all tasks by profit efficiency
+            all_tasks.sort(key=lambda t: t.gold_efficiency, reverse=True)
 
-    cached_data = {
-        'categories': categories_data,
-        'all_tasks': all_tasks,
-        'total_categories': len(task_service.categories),
-        'total_tasks': sum(len(cat['tasks_with_data']) for cat in categories_data),
-        'profitable_tasks': len([t for t in all_tasks if t.gold_efficiency > 0]),
-        'top_tasks': all_tasks[:10],
-        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    }
-    last_update = time.time()
-    print("Data loading complete!")
+            cached_data = {
+                'categories': categories_data,
+                'all_tasks': all_tasks,
+                'total_categories': len(task_service.categories),
+                'total_tasks': sum(len(cat['tasks_with_data']) for cat in categories_data),
+                'profitable_tasks': len([t for t in all_tasks if t.gold_efficiency > 0]),
+                'top_tasks': all_tasks[:10],
+                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            }
+            last_update = time.time()
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ Data loading complete! Next update in 15 minutes.")
+
+    except Exception as e:
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] ❌ Error updating data: {e}")
+
     return cached_data
+
 
 @app.route('/')
 def index():
-    global cached_data, last_update
+    global cached_data
 
-    # Refresh data if it's older than 5 minutes or doesn't exist
-    if not cached_data or not last_update or (time.time() - last_update) > 300:
-        load_and_calculate_data()
+    # Wait for initial data if not loaded yet
+    if not cached_data:
+        print("⏳ Waiting for initial data load...")
+        time.sleep(2)  # Give scheduler time to load data
+        if not cached_data:
+            return "<h1>🔄 Loading data... Please refresh in a moment.</h1>"
 
-    return render_template('index.html', **cached_data)
+    with data_lock:
+        data_copy = cached_data.copy() if cached_data else {}
+
+    return render_template('index.html', **data_copy)
+
 
 @app.route('/refresh')
 def refresh():
-    load_and_calculate_data()
+    """Just refresh the frontend view - no new API calls"""
     return index()
 
-def run_console_mode():
-    """Run the original console mode"""
-    print("=== Idle Clans Profit Optimizer ===")
-    print("Fetching market prices...")
-    fetchPrices()
 
-    print(f"Analyzing {len(task_service.categories)} categories...")
-    print()
 
-    # Calculate efficiency for all tasks
-    all_tasks = []
-    for category in task_service.categories:
-        print(f"Category: {category.name}")
-        for task in category.tasks:
-            if calculateEfficiency(task):
-                all_tasks.append(task)
 
-    # Show top 10 most profitable tasks
-    if all_tasks:
-        print("=" * 50)
-        print("TOP 10 MOST PROFITABLE TASKS:")
-        print("=" * 50)
-        all_tasks.sort(key=lambda t: t.gold_efficiency, reverse=True)
-        for i, task in enumerate(all_tasks[:10], 1):
-            print(f"{i:2}. {task.name}")
-            print(f"    Gold/sec: {task.gold_efficiency:.3f}")
-            print(f"    XP/sec: {task.xp_efficiency:.2f}")
-            print()
+@app.route('/status')
+def status():
+    """API endpoint to check data freshness"""
+    global last_update, cached_data
 
-    print("\nThank you for using Idle Clans Profit Calculator")
+    return jsonify({
+        'last_update': datetime.fromtimestamp(last_update).strftime('%Y-%m-%d %H:%M:%S') if last_update else None,
+        'data_loaded': bool(cached_data),
+        'minutes_since_update': int((time.time() - last_update) / 60) if last_update else None
+    })
+
+
+def start_scheduler():
+    """Start background scheduler for periodic data updates"""
+    global scheduler
+
+    scheduler = BackgroundScheduler()
+    # Load data immediately on startup
+    load_and_calculate_data()
+    # Then schedule updates every 15 minutes
+    scheduler.add_job(
+        func=load_and_calculate_data,
+        trigger="interval",
+        minutes=15,
+        id='update_market_data'
+    )
+    scheduler.start()
+    print("📅 Background scheduler started - updating data every 15 minutes")
+
 
 if __name__ == "__main__":
-    import sys
+    print("=== 🏆 Idle Clans Profit Optimizer - Web Server ===")
+    print("🚀 Starting background data scheduler...")
+    start_scheduler()
 
-    if len(sys.argv) > 1 and sys.argv[1] == '--console':
-        run_console_mode()
-    else:
-        print("=== Idle Clans Profit Optimizer - Web Server ===")
-        print("Loading initial data...")
-        load_and_calculate_data()
-        print("Starting web server...")
-        print("Open your browser to: http://localhost:5000")
-        app.run(debug=True, host='0.0.0.0', port=5000)
+    try:
+        print("🌐 Starting web server...")
+        print("📊 Open your browser to: http://localhost:5000")
+        print("🔄 Data updates automatically every 15 minutes")
+        app.run(debug=False, host='0.0.0.0', port=5000)  # debug=False for production
+    except KeyboardInterrupt:
+        print("\n🛑 Shutting down...")
+        if scheduler:
+            scheduler.shutdown()
+        print("✅ Scheduler stopped")
