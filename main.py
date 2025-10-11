@@ -44,6 +44,31 @@ babel.init_app(app, locale_selector=get_locale)
 _ = gettext  # Standard gettext function
 _l = lazy_gettext  # Lazy gettext for form labels etc.
 
+# Dynamic translation collection
+missing_translations = {
+    'items': set(),
+    'categories': set()
+}
+
+# Translation maps - add translations here
+ITEM_TRANSLATIONS = {
+    'en': {},
+    'de': {
+        # Add German item translations here
+        # 'spruce_log': 'Fichtenholz',
+        # 'iron_ore': 'Eisenerz',
+    }
+}
+
+CATEGORY_TRANSLATIONS = {
+    'en': {},
+    'de': {
+        # Add German category translations here
+        # 'Carpentry': 'Tischlerei',
+        # 'Mining': 'Bergbau',
+    }
+}
+
 # Initialize API Client
 api_client = APIClient()
 # Initialize API DataServices
@@ -72,7 +97,7 @@ def fetchPrices():
     )
 
 
-def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 1}, verbose=True):
+def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 1}, verbose=True, collect_missing=False):
     # Todo: Calculate effective time from time multiplier
     # effective_time = character["time_multiplier"] * task.base_time
     # Convert from milliseconds to seconds
@@ -134,7 +159,7 @@ def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 
     task.xp_efficiency_calculation_time = time.time()
 
     # Create tooltip for cost breakdown
-    task.cost_tooltip = create_cost_tooltip(task.costs or [], latest_prices)
+    task.cost_tooltip = create_cost_tooltip(task.costs or [], latest_prices, collect_missing)
 
     if verbose:
         # Print efficiency results for this task
@@ -156,7 +181,7 @@ def latest_prices_get_item(latest_prices, id):
             return item
 
 
-def create_cost_tooltip(costs, latest_prices):
+def create_cost_tooltip(costs, latest_prices, collect_missing=False):
     """Create a tooltip showing cost breakdown"""
     if not costs:
         return _("No materials required")
@@ -167,7 +192,7 @@ def create_cost_tooltip(costs, latest_prices):
         if cost.item:
             cost_item_price = latest_prices_get_item(latest_prices, cost.item.id)
             # Translate item name (for now just use key, later we'll add translations)
-            item_name = translate_item_name(cost.item.name)
+            item_name = translate_item_name(cost.item.name, collect_missing)
 
             if cost_item_price:
                 unit_price = cost_item_price["lowestSellPrice"]
@@ -182,20 +207,43 @@ def create_cost_tooltip(costs, latest_prices):
     return "\n".join(tooltip_lines)
 
 
-def translate_item_name(item_key):
-    """Translate item name - for now return key, later add proper translations"""
-    # TODO: Add item name translations here
-    # This will be where we map API keys to localized names
-    return item_key  # For now, just return the key
+def translate_item_name(item_key, collect_missing=False):
+    """Translate item name with optional collection of missing translations"""
+    global missing_translations
+
+    locale = get_locale()
+    translations = ITEM_TRANSLATIONS.get(locale, {})
+
+    if item_key in translations:
+        return translations[item_key]
+
+    # Collect missing translation only when requested
+    if collect_missing:
+        missing_translations['items'].add(item_key)
+
+    # Return key for now
+    return item_key
 
 
-def translate_category_name(category_key):
-    """Translate category name - for now return key, later add proper translations"""
-    # TODO: Add category name translations here
-    return category_key  # For now, just return the key
+def translate_category_name(category_key, collect_missing=False):
+    """Translate category name with optional collection of missing translations"""
+    global missing_translations
+
+    locale = get_locale()
+    translations = CATEGORY_TRANSLATIONS.get(locale, {})
+
+    if category_key in translations:
+        return translations[category_key]
+
+    # Collect missing translation only when requested
+    if collect_missing:
+        missing_translations['categories'].add(category_key)
+
+    # Return key for now
+    return category_key
 
 
-def load_and_calculate_data():
+def load_and_calculate_data(collect_missing_translations=False):
     """Load market data and calculate efficiency for all tasks - Background job"""
     global cached_data, last_update
 
@@ -212,16 +260,16 @@ def load_and_calculate_data():
 
             for category in task_service.categories:
                 category_data = {
-                    'name': translate_category_name(category.name),
+                    'name': translate_category_name(category.name, collect_missing_translations),
                     'raw_name': category.name,  # Keep original for debugging
                     'tasks_with_data': []
                 }
 
                 for task in category.tasks:
-                    if calculateEfficiency(task, verbose=False):
-                        task.category_name = translate_category_name(category.name)
+                    if calculateEfficiency(task, verbose=False, collect_missing=collect_missing_translations):
+                        task.category_name = translate_category_name(category.name, collect_missing_translations)
                         # Add translated names for display
-                        task.display_name = translate_item_name(task.name)
+                        task.display_name = translate_item_name(task.name, collect_missing_translations)
                         category_data['tasks_with_data'].append(task)
                         all_tasks.append(task)
 
@@ -254,6 +302,14 @@ def load_and_calculate_data():
 def index():
     global cached_data
 
+    # Check if user wants to collect missing translations
+    collect_missing = request.args.get('i18n') == 'missing'
+
+    # If collecting translations, regenerate data with collection enabled
+    if collect_missing:
+        print("🔍 Collecting missing translations...")
+        load_and_calculate_data(collect_missing_translations=True)
+
     # Wait for initial data if not loaded yet
     if not cached_data:
         print("⏳ Waiting for initial data load...")
@@ -266,8 +322,8 @@ def index():
 
     # Make translation functions available in template
     data_copy['_'] = _
-    data_copy['translate_item_name'] = translate_item_name
-    data_copy['translate_category_name'] = translate_category_name
+    data_copy['translate_item_name'] = lambda key: translate_item_name(key, collect_missing)
+    data_copy['translate_category_name'] = lambda key: translate_category_name(key, collect_missing)
 
     return render_template('index.html', **data_copy)
 
@@ -289,6 +345,25 @@ def status():
         'last_update': datetime.fromtimestamp(last_update).strftime('%Y-%m-%d %H:%M:%S') if last_update else None,
         'data_loaded': bool(cached_data),
         'minutes_since_update': int((time.time() - last_update) / 60) if last_update else None
+    })
+
+@app.route('/translations-needed')
+def translations_needed():
+    """Debug endpoint showing missing translations"""
+    global missing_translations
+
+    return jsonify({
+        'missing_items': sorted(list(missing_translations['items'])),
+        'missing_categories': sorted(list(missing_translations['categories'])),
+        'total_missing_items': len(missing_translations['items']),
+        'total_missing_categories': len(missing_translations['categories']),
+        'current_locale': get_locale(),
+        'example_item_template': {
+            item: f"# TODO: Translate '{item}'" for item in list(missing_translations['items'])[:5]
+        },
+        'example_category_template': {
+            cat: f"# TODO: Translate '{cat}'" for cat in list(missing_translations['categories'])[:5]
+        }
     })
 
 
