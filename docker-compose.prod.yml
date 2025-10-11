@@ -1,0 +1,56 @@
+version: '3.8'
+
+# Production-optimized docker-compose
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  idle-clans-optimizer:
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=false
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+      replicas: 2  # Run 2 instances for redundancy
+    networks:
+      - idle-clans-network
+
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"  # HTTPS ready
+    volumes:
+      - ./nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro  # SSL certificates
+    depends_on:
+      - idle-clans-optimizer
+    restart: unless-stopped
+    networks:
+      - idle-clans-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  # Optional: Add monitoring
+  watchtower:
+    image: containrrr/watchtower
+    container_name: idle-clans-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 4 * * *  # Check for updates at 4 AM daily
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+networks:
+  idle-clans-network:
+    driver: bridge

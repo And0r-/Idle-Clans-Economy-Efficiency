@@ -9,6 +9,8 @@ services:
     environment:
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/status"]
@@ -17,10 +19,25 @@ services:
       retries: 3
       start_period: 30s
     volumes:
-      # Optional: Mount data directory if you want to persist data
+      # Data directory (read-only)
       - ./data:/app/data:ro
+      # Logs directory (writable)
+      - ./logs:/app/logs
     networks:
       - idle-clans-network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # Optional: Add nginx reverse proxy for production
   nginx:
