@@ -233,9 +233,9 @@
                 {% for task in category.tasks_with_data %}
                 <tr>
                     <td><strong>{{ task.display_name or task.name }}</strong></td>
-                    <td>{{ "%.2f"|format(task.revenue) }}</td>
-                    <td class="tooltip" data-tooltip="{{ task.cost_tooltip }}">{{ "%.2f"|format(task.total_cost) }}</td>
-                    <td>
+                    <td data-sort="{{ task.revenue }}">{{ "%.2f"|format(task.revenue) }}</td>
+                    <td class="tooltip" data-tooltip="{{ task.cost_tooltip }}" data-sort="{{ task.total_cost }}">{{ "%.2f"|format(task.total_cost) }}</td>
+                    <td data-sort="{{ task.net_profit }}">
                         {% if task.net_profit > 0 %}
                             <span class="profit-positive">{{ "%.2f"|format(task.net_profit) }}</span>
                         {% elif task.net_profit < 0 %}
@@ -244,8 +244,8 @@
                             <span class="profit-zero">{{ "%.2f"|format(task.net_profit) }}</span>
                         {% endif %}
                     </td>
-                    <td>{{ "%.1f"|format(task.base_time / 1000.0) }}</td>
-                    <td>
+                    <td data-sort="{{ task.base_time / 1000.0 }}">{{ "%.1f"|format(task.base_time / 1000.0) }}</td>
+                    <td data-sort="{{ task.gold_efficiency }}">
                         {% if task.gold_efficiency > 0 %}
                             <span class="profit-positive">{{ "%.3f"|format(task.gold_efficiency) }}</span>
                         {% elif task.gold_efficiency < 0 %}
@@ -254,7 +254,7 @@
                             <span class="profit-zero">{{ "%.3f"|format(task.gold_efficiency) }}</span>
                         {% endif %}
                     </td>
-                    <td>{{ "%.2f"|format(task.xp_efficiency) }}</td>
+                    <td data-sort="{{ task.xp_efficiency }}">{{ "%.2f"|format(task.xp_efficiency) }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -347,11 +347,19 @@
                     "columnDefs": [
                         {
                             "targets": [1, 2, 3, 4, 5, 6],  // Revenue, Costs, Net Profit, Time, Profit/sec, XP/sec
-                            "type": "num"  // Treat as numeric for proper sorting
+                            "type": "num",  // Treat as numeric for proper sorting
+                            "orderDataType": "dom-data-sort"  // Use data-sort attribute for sorting
                         }
                     ]
                 });
             });
+
+            // Custom sorting type that uses data-sort attribute
+            $.fn.dataTable.ext.order['dom-data-sort'] = function (settings, col) {
+                return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
+                    return parseFloat($(td).attr('data-sort')) || 0;
+                });
+            };
         });
     </script>
 </body>
