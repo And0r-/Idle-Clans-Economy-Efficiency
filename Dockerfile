@@ -7,7 +7,7 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV FLASK_APP=main_web.py
+ENV FLASK_APP=main.py
 ENV FLASK_ENV=production
 
 # Install system dependencies
@@ -36,5 +36,5 @@ EXPOSE 5000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:5000/status || exit 1
 
-# Run the application
-CMD ["python", "main_web.py"]
+# Run the application with Waitress (production WSGI server)
+CMD ["python", "main.py"]
