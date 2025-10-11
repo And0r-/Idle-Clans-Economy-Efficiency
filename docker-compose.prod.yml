@@ -16,7 +16,7 @@ services:
         reservations:
           memory: 512M
           cpus: '0.5'
-      replicas: 2  # Run 2 instances for redundancy
+      # replicas: 2  # Uncomment for Docker Swarm mode
     networks:
       - idle-clans-network
 
