@@ -1,6 +1,6 @@
 version: '3.8'
 
-# Production-optimized docker-compose
+# Production deployment with Nginx
 # Usage: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 services:
@@ -8,17 +8,6 @@ services:
     environment:
       - FLASK_ENV=production
       - FLASK_DEBUG=false
-    deploy:
-      resources:
-        limits:
-          memory: 1G
-          cpus: '1.0'
-        reservations:
-          memory: 512M
-          cpus: '0.5'
-      # replicas: 2  # Uncomment for Docker Swarm mode
-    networks:
-      - idle-clans-network
 
   nginx:
     ports:
