@@ -108,6 +108,7 @@ scheduler = None
 
 def fetchPrices():
     global latest_prices
+    # Get prices with average price (24h) included
     latest_prices = player_market_service.get_items_prices_latest(
         include_average_price=True
     )
@@ -141,27 +142,37 @@ def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 
         return False
 
     # Calculate revenue
-    item_price = latest_prices_get_item(latest_prices, task.item_reward.id)
-    if not item_price:
+    item_price_data = latest_prices_get_item(latest_prices, task.item_reward.id)
+    if not item_price_data:
         if verbose:
             print(f"  No market data for {task.item_reward.id}")
         return False
 
+    # Use new price function for selling
+    sell_price = get_item_price(item_price_data, price_type='sell')
+    if not sell_price or sell_price <= 0:
+        sell_price = task.item_reward.base_value  # Fallback to base value
+
     revenue = max(
         task.item_reward.base_value * task.item_amount,
-        item_price["highestBuyPrice"] * task.item_amount
+        sell_price * task.item_amount
     )
-    task.sold_as_base_price = task.item_reward.base_value >= item_price["highestBuyPrice"]
+    task.sold_as_base_price = task.item_reward.base_value >= sell_price
 
     # Calculate material costs
     total_cost = 0
     for cost in task.costs or []:
         if cost.item:
-            cost_item_price = latest_prices_get_item(latest_prices, cost.item.id)
-            if cost_item_price:
-                # Use lowest sell price (what we'd pay to buy materials)
-                material_cost = cost_item_price["lowestSellPrice"] * cost.amount
-                total_cost += material_cost
+            cost_item_price_data = latest_prices_get_item(latest_prices, cost.item.id)
+            if cost_item_price_data:
+                # Use new price function for buying materials
+                buy_price = get_item_price(cost_item_price_data, price_type='buy')
+                if buy_price and buy_price > 0:
+                    material_cost = buy_price * cost.amount
+                    total_cost += material_cost
+                else:
+                    # Fallback to base value if no valid price
+                    total_cost += cost.item.base_value * cost.amount
             else:
                 # Fallback to base value if no market data
                 total_cost += cost.item.base_value * cost.amount
@@ -196,6 +207,48 @@ def latest_prices_get_item(latest_prices, id):
         if item["itemId"] == id:
             return item
 
+# Price strategy configuration (can be made configurable later)
+PRICE_STRATEGY = {
+    'sell': 'average_1d',  # Options: 'instant', 'average_1d', 'average_7d', 'average_30d'
+    'buy': 'instant'       # Options: 'instant', 'average_1d', 'average_7d', 'average_30d'
+}
+
+def get_item_price(item_price_data, price_type='sell'):
+    """
+    Get the price for an item based on configured strategy
+
+    Args:
+        item_price_data: Price data from API for a specific item
+        price_type: 'sell' for revenue calculation, 'buy' for cost calculation
+
+    Returns:
+        float: The price to use for calculations
+    """
+    if not item_price_data:
+        return None
+
+    strategy = PRICE_STRATEGY.get(price_type, 'average_1d')
+
+    if strategy == 'instant':
+        if price_type == 'sell':
+            # Instant sell: what buyers are offering right now
+            return item_price_data.get("highestBuyPrice", 0)
+        else:
+            # Instant buy: what sellers are asking right now
+            return item_price_data.get("lowestSellPrice", 0)
+
+    elif strategy == 'average_1d':
+        # Use 24h average price (more stable, realistic)
+        avg_price = item_price_data.get("averagePrice", None)
+        if avg_price:
+            return avg_price
+        # Fallback to instant if no average available
+        return get_item_price(item_price_data, price_type='sell' if price_type == 'sell' else 'buy')
+
+    # For now, other strategies fallback to 1d average
+    # TODO: Implement 7d and 30d averages when we fetch comprehensive data
+    return get_item_price(item_price_data, price_type)
+
 
 def create_cost_tooltip(costs, latest_prices, collect_missing=False):
     """Create a tooltip showing cost breakdown"""
@@ -206,14 +259,22 @@ def create_cost_tooltip(costs, latest_prices, collect_missing=False):
 
     for cost in costs:
         if cost.item:
-            cost_item_price = latest_prices_get_item(latest_prices, cost.item.id)
+            cost_item_price_data = latest_prices_get_item(latest_prices, cost.item.id)
             # Translate item name (for now just use key, later we'll add translations)
             item_name = translate_item_name(cost.item.name, collect_missing)
 
-            if cost_item_price:
-                unit_price = cost_item_price["lowestSellPrice"]
-                total_cost = unit_price * cost.amount
-                tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} = {total_cost:.2f} gold")
+            if cost_item_price_data:
+                unit_price = get_item_price(cost_item_price_data, price_type='buy')
+                if unit_price and unit_price > 0:
+                    total_cost = unit_price * cost.amount
+                    # Show price source in tooltip
+                    price_type = "(avg)" if PRICE_STRATEGY['buy'] == 'average_1d' else ""
+                    tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} {price_type} = {total_cost:.2f} gold")
+                else:
+                    # Fallback to base value
+                    unit_price = cost.item.base_value
+                    total_cost = unit_price * cost.amount
+                    tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
             else:
                 # Fallback to base value
                 unit_price = cost.item.base_value
