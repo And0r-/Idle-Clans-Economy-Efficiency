@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idle Clans Profit Optimizer</title>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -141,6 +148,27 @@
             border-top-color: #2c3e50;
             z-index: 1000;
         }
+
+        /* DataTables styling overrides */
+        .dataTables_wrapper {
+            padding: 0;
+        }
+
+        /* Keep our existing table styling */
+        .dataTables_wrapper table {
+            margin: 0;
+        }
+
+        .dataTables_wrapper th {
+            background-color: #f8f9fa !important;
+            font-weight: bold !important;
+            color: #2c3e50 !important;
+            cursor: pointer;
+        }
+
+        .dataTables_wrapper th:hover {
+            background-color: #e9ecef !important;
+        }
     </style>
 </head>
 <body>
@@ -189,7 +217,7 @@
         <h2 class="category-header">{{ category.name }}</h2>
 
         {% if category.tasks_with_data %}
-        <table>
+        <table class="category-table" id="table-{{ loop.index }}">
             <thead>
                 <tr>
                     <th>{{ _('Task Name') }}</th>
@@ -306,6 +334,25 @@
                     console.error('Error setting language:', error);
                 });
         }
+
+        // Initialize DataTables when page loads
+        $(document).ready(function() {
+            $('.category-table').each(function() {
+                $(this).DataTable({
+                    "order": [[ 5, "desc" ]],  // Sort by Profit/sec column (index 5) descending by default
+                    "paging": false,    // Disable pagination
+                    "searching": false, // Disable search
+                    "info": false,      // Disable info text
+                    "lengthChange": false, // Disable "show X entries"
+                    "columnDefs": [
+                        {
+                            "targets": [1, 2, 3, 4, 5, 6],  // Revenue, Costs, Net Profit, Time, Profit/sec, XP/sec
+                            "type": "num"  // Treat as numeric for proper sorting
+                        }
+                    ]
+                });
+            });
+        });
     </script>
 </body>
 </html>
