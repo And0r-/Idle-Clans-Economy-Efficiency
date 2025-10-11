@@ -29,18 +29,20 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
 # Initialize Babel
-babel = Babel(app)
+babel = Babel()
 
-# Create translation helper functions
-_ = gettext  # Standard gettext function
-_l = lazy_gettext  # Lazy gettext for form labels etc.
-
-@babel.localeselector
 def get_locale():
     """Select locale based on request"""
     # 1. Check if user explicitly selected a language (future feature)
     # 2. Check browser Accept-Language header
     return request.accept_languages.best_match(app.config['LANGUAGES'].keys()) or 'en'
+
+# Initialize Babel with app and locale selector
+babel.init_app(app, locale_selector=get_locale)
+
+# Create translation helper functions
+_ = gettext  # Standard gettext function
+_l = lazy_gettext  # Lazy gettext for form labels etc.
 
 # Initialize API Client
 api_client = APIClient()
