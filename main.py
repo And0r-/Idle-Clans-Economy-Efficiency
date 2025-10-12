@@ -104,6 +104,13 @@ cached_data = None
 last_update = None
 data_lock = threading.Lock()
 scheduler = None
+health_status = {
+    'healthy': True,
+    'message': 'Starting up...',
+    'last_check': None,
+    'tasks_calculated': 0,
+    'tasks_skipped': 0
+}
 
 
 def fetchPrices():
@@ -150,8 +157,10 @@ def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 
 
     # Use new price function for selling
     sell_price = get_item_price(item_price_data, price_type='sell')
-    if not sell_price or sell_price <= 0:
-        sell_price = task.item_reward.base_value  # Fallback to base value
+    if sell_price is None:
+        if verbose:
+            print(f"  Missing price data for {task.item_reward.id} - skipping task")
+        return False
 
     revenue = max(
         task.item_reward.base_value * task.item_amount,
@@ -164,18 +173,20 @@ def calculateEfficiency(task, character={"xp_multiplier": 1, "time_multiplier": 
     for cost in task.costs or []:
         if cost.item:
             cost_item_price_data = latest_prices_get_item(latest_prices, cost.item.id)
-            if cost_item_price_data:
-                # Use new price function for buying materials
-                buy_price = get_item_price(cost_item_price_data, price_type='buy')
-                if buy_price and buy_price > 0:
-                    material_cost = buy_price * cost.amount
-                    total_cost += material_cost
-                else:
-                    # Fallback to base value if no valid price
-                    total_cost += cost.item.base_value * cost.amount
-            else:
-                # Fallback to base value if no market data
-                total_cost += cost.item.base_value * cost.amount
+            if not cost_item_price_data:
+                if verbose:
+                    print(f"  Missing market data for material {cost.item.id} - skipping task")
+                return False
+
+            # Use new price function for buying materials
+            buy_price = get_item_price(cost_item_price_data, price_type='buy')
+            if buy_price is None:
+                if verbose:
+                    print(f"  Missing price for material {cost.item.id} - skipping task")
+                return False
+
+            material_cost = buy_price * cost.amount
+            total_cost += material_cost
 
     # Calculate net profit and efficiency
     net_profit = revenue - total_cost
@@ -222,7 +233,7 @@ def get_item_price(item_price_data, price_type='sell'):
         price_type: 'sell' for revenue calculation, 'buy' for cost calculation
 
     Returns:
-        float: The price to use for calculations
+        float or None: The price to use for calculations, None if data is missing
     """
     if not item_price_data:
         return None
@@ -232,28 +243,26 @@ def get_item_price(item_price_data, price_type='sell'):
     if strategy == 'instant':
         if price_type == 'sell':
             # Instant sell: what buyers are offering right now
-            return item_price_data.get("highestBuyPrice", 0)
+            return item_price_data.get("highestBuyPrice")
         else:
             # Instant buy: what sellers are asking right now
-            return item_price_data.get("lowestSellPrice", 0)
+            return item_price_data.get("lowestSellPrice")
 
     elif strategy == 'average_1d':
         # Use 24h average price (more stable, realistic)
-        avg_price = item_price_data.get("averagePrice", None)
-        if avg_price:
+        avg_price = item_price_data.get("dailyAveragePrice")
+        # If average is 0, item wasn't traded in 24h - fallback to instant
+        if avg_price and avg_price > 0:
             return avg_price
-        # Fallback to instant prices if no average available
+        # Fallback to instant prices for items without recent trades
         if price_type == 'sell':
-            return item_price_data.get("highestBuyPrice", 0)
+            return item_price_data.get("highestBuyPrice")
         else:
-            return item_price_data.get("lowestSellPrice", 0)
+            return item_price_data.get("lowestSellPrice")
 
-    # For now, other strategies fallback to instant prices
+    # For future strategies (7d, 30d averages)
     # TODO: Implement 7d and 30d averages when we fetch comprehensive data
-    if price_type == 'sell':
-        return item_price_data.get("highestBuyPrice", 0)
-    else:
-        return item_price_data.get("lowestSellPrice", 0)
+    return None
 
 
 def create_cost_tooltip(costs, latest_prices, collect_missing=False):
@@ -266,26 +275,20 @@ def create_cost_tooltip(costs, latest_prices, collect_missing=False):
     for cost in costs:
         if cost.item:
             cost_item_price_data = latest_prices_get_item(latest_prices, cost.item.id)
-            # Translate item name (for now just use key, later we'll add translations)
+            # Translate item name
             item_name = translate_item_name(cost.item.name, collect_missing)
 
             if cost_item_price_data:
                 unit_price = get_item_price(cost_item_price_data, price_type='buy')
-                if unit_price and unit_price > 0:
+                if unit_price is not None:
                     total_cost = unit_price * cost.amount
                     # Show price source in tooltip
                     price_type = "(avg)" if PRICE_STRATEGY['buy'] == 'average_1d' else ""
                     tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} {price_type} = {total_cost:.2f} gold")
                 else:
-                    # Fallback to base value
-                    unit_price = cost.item.base_value
-                    total_cost = unit_price * cost.amount
-                    tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
+                    tooltip_lines.append(f"• {item_name}: {cost.amount}x @ ??? (no price data)")
             else:
-                # Fallback to base value
-                unit_price = cost.item.base_value
-                total_cost = unit_price * cost.amount
-                tooltip_lines.append(f"• {item_name}: {cost.amount}x @ {unit_price:.2f} (base) = {total_cost:.2f} gold")
+                tooltip_lines.append(f"• {item_name}: {cost.amount}x @ ??? (no market data)")
 
     return "\n".join(tooltip_lines)
 
@@ -328,7 +331,7 @@ def translate_category_name(category_key, collect_missing=False):
 
 def load_and_calculate_data(collect_missing_translations=False):
     """Load market data and calculate efficiency for all tasks - Background job"""
-    global cached_data, last_update
+    global cached_data, last_update, health_status
 
     try:
         with data_lock:
@@ -340,6 +343,8 @@ def load_and_calculate_data(collect_missing_translations=False):
             # Calculate efficiency for all tasks
             categories_data = []
             all_tasks = []
+            total_tasks_attempted = 0
+            tasks_calculated = 0
 
             for category in task_service.categories:
                 # Use English for background job, avoid translation calls that need request context
@@ -350,12 +355,14 @@ def load_and_calculate_data(collect_missing_translations=False):
                 }
 
                 for task in category.tasks:
+                    total_tasks_attempted += 1
                     if calculateEfficiency(task, verbose=False, collect_missing=collect_missing_translations):
                         task.category_name = category.name  # Use raw name for background job
                         # Use raw name for background job
                         task.display_name = task.name
                         category_data['tasks_with_data'].append(task)
                         all_tasks.append(task)
+                        tasks_calculated += 1
 
                 # Sort tasks by profit efficiency
                 category_data['tasks_with_data'].sort(key=lambda t: t.gold_efficiency, reverse=True)
@@ -364,7 +371,24 @@ def load_and_calculate_data(collect_missing_translations=False):
             # Sort all tasks by profit efficiency
             all_tasks.sort(key=lambda t: t.gold_efficiency, reverse=True)
 
-            cached_data = {
+            # Calculate quality metrics
+            tasks_skipped = total_tasks_attempted - tasks_calculated
+            success_rate = (tasks_calculated / total_tasks_attempted * 100) if total_tasks_attempted > 0 else 0
+
+            # Validate data quality - require at least 75% success rate
+            # (Some tasks have no item_reward or invalid base_time, which is normal)
+            if success_rate < 75:
+                health_status['healthy'] = False
+                health_status['message'] = f"Low data quality: {success_rate:.1f}% success rate ({tasks_skipped}/{total_tasks_attempted} tasks skipped)"
+                health_status['tasks_calculated'] = tasks_calculated
+                health_status['tasks_skipped'] = tasks_skipped
+                health_status['last_check'] = datetime.now().isoformat()
+                print(f"[{datetime.now().strftime('%H:%M:%S')}] ⚠️  Data quality check failed: {success_rate:.1f}% success rate")
+                print(f"[{datetime.now().strftime('%H:%M:%S')}] 🔄 Keeping previous data, skipping update")
+                return cached_data  # Keep old data
+
+            # Data is good, update cache
+            new_data = {
                 'categories': categories_data,
                 'all_tasks': all_tasks,
                 'total_categories': len(task_service.categories),
@@ -373,10 +397,23 @@ def load_and_calculate_data(collect_missing_translations=False):
                 'top_tasks': all_tasks[:10],
                 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             }
+
+            cached_data = new_data
             last_update = time.time()
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ Data loading complete! Next update in 15 minutes.")
+
+            # Update health status
+            health_status['healthy'] = True
+            health_status['message'] = f"OK: {success_rate:.1f}% success rate"
+            health_status['tasks_calculated'] = tasks_calculated
+            health_status['tasks_skipped'] = tasks_skipped
+            health_status['last_check'] = datetime.now().isoformat()
+
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ Data loading complete! {tasks_calculated}/{total_tasks_attempted} tasks calculated ({success_rate:.1f}%)")
 
     except Exception as e:
+        health_status['healthy'] = False
+        health_status['message'] = f"Error: {str(e)}"
+        health_status['last_check'] = datetime.now().isoformat()
         print(f"[{datetime.now().strftime('%H:%M:%S')}] ❌ Error updating data: {e}")
 
     return cached_data
@@ -492,6 +529,25 @@ def set_language(language):
     # Set cookie for 1 year
     response.set_cookie('language', language, max_age=60*60*24*365)
     return response
+
+@app.route('/health')
+def health():
+    """Health check endpoint for monitoring (e.g., Uptime Kuma)"""
+    global health_status, cached_data, last_update
+
+    status_code = 200 if health_status['healthy'] else 503
+
+    response_data = {
+        'status': 'healthy' if health_status['healthy'] else 'unhealthy',
+        'message': health_status['message'],
+        'last_check': health_status['last_check'],
+        'last_update': datetime.fromtimestamp(last_update).isoformat() if last_update else None,
+        'data_available': bool(cached_data),
+        'tasks_calculated': health_status.get('tasks_calculated', 0),
+        'tasks_skipped': health_status.get('tasks_skipped', 0)
+    }
+
+    return jsonify(response_data), status_code
 
 
 def start_scheduler():
