@@ -18,36 +18,87 @@ class TaskService:
             raw_text = re.sub(r'^\s*"_id":\s*"[^"]*",?\s*\n', '', raw_text, flags=re.MULTILINE)
             data = json.loads(raw_text)
 
-            self.categories = [
-                TaskCategory(
-                    id=task["Tasks"][0]["Items"][0]["TaskId"],
-                    skill_id=task["Tasks"][0]["Items"][0]["Skill"],
-                    name=task["Key"],
-                    tasks=[
-                        TaskItem(
-                            name=task_item["Name"],
-                            item_reward=(
-                                item_service.get_item_by_id(task_item["ItemReward"])
-                                if task_item["ItemReward"] != -1
-                                else None
-                            ),
-                            level_requirement=task_item["LevelRequirement"],
-                            base_time=task_item["BaseTime"],
-                            exp_reward=task_item["ExpReward"],
-                            item_amount=task_item["ItemAmount"],
-                            costs=[
-                                TaskCost(
-                                    item=item_service.get_item_by_id(cost["Item"]),
-                                    amount=cost["Amount"],
-                                )
-                                for cost in task_item["Costs"] or []
-                            ],
-                        )
-                        for task_item in task["Tasks"][0]["Items"]
-                    ],
-                )
-                for task in data["Tasks"]
-            ]
+            # Support both old and new API structure
+            tasks_data = data.get("Tasks", {})
+
+            if isinstance(tasks_data, dict):
+                # New API structure: Tasks is a dictionary with skill names as keys
+                self.categories = []
+                for skill_name, task_groups in tasks_data.items():
+                    if not task_groups:
+                        continue
+
+                    # Collect all task items from all groups for this skill
+                    all_task_items = []
+                    for group in task_groups:
+                        if isinstance(group, dict) and "Items" in group:
+                            all_task_items.extend(group["Items"])
+
+                    if not all_task_items:
+                        continue
+
+                    # Create category for this skill
+                    first_item = all_task_items[0]
+                    category = TaskCategory(
+                        id=first_item.get("TaskId", 0),
+                        skill_id=first_item.get("Skill", 0),
+                        name=skill_name,
+                        tasks=[
+                            TaskItem(
+                                name=task_item["Name"],
+                                item_reward=(
+                                    item_service.get_item_by_id(task_item["ItemReward"])
+                                    if task_item.get("ItemReward", -1) != -1
+                                    else None
+                                ),
+                                level_requirement=task_item.get("LevelRequirement", 0),
+                                base_time=task_item.get("BaseTime", 0),
+                                exp_reward=task_item.get("ExpReward", 0),
+                                item_amount=task_item.get("ItemAmount", 1),
+                                costs=[
+                                    TaskCost(
+                                        item=item_service.get_item_by_id(cost["Item"]),
+                                        amount=cost["Amount"],
+                                    )
+                                    for cost in task_item.get("Costs") or []
+                                ],
+                            )
+                            for task_item in all_task_items
+                        ],
+                    )
+                    self.categories.append(category)
+            else:
+                # Old API structure: Tasks is a list
+                self.categories = [
+                    TaskCategory(
+                        id=task["Tasks"][0]["Items"][0]["TaskId"],
+                        skill_id=task["Tasks"][0]["Items"][0]["Skill"],
+                        name=task["Key"],
+                        tasks=[
+                            TaskItem(
+                                name=task_item["Name"],
+                                item_reward=(
+                                    item_service.get_item_by_id(task_item["ItemReward"])
+                                    if task_item["ItemReward"] != -1
+                                    else None
+                                ),
+                                level_requirement=task_item["LevelRequirement"],
+                                base_time=task_item["BaseTime"],
+                                exp_reward=task_item["ExpReward"],
+                                item_amount=task_item["ItemAmount"],
+                                costs=[
+                                    TaskCost(
+                                        item=item_service.get_item_by_id(cost["Item"]),
+                                        amount=cost["Amount"],
+                                    )
+                                    for cost in task_item["Costs"] or []
+                                ],
+                            )
+                            for task_item in task["Tasks"][0]["Items"]
+                        ],
+                    )
+                    for task in tasks_data
+                ]
 
     def get_tasks(self):
         return self.categories
