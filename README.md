@@ -159,11 +159,60 @@ This guide will help you install and set up the Python project for Idle Clans Pr
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-   Run the program and it will calculate the best items for efficiency
+### Running the Application
 
-   ```sh
-   python main.py
-   ```
+For local development:
+```sh
+python main.py
+```
+
+For production (Docker):
+```sh
+docker-compose up -d
+```
+
+The application will:
+- Automatically fetch market prices every 15 minutes
+- Calculate profit efficiency for all tasks
+- Display results at http://localhost:5000 (or port 8001 in Docker)
+
+### Updating Game Data
+
+**Important:** Game configuration data (items, tasks, recipes) is **not** automatically updated and must be manually refreshed after game updates.
+
+#### Development Environment
+
+```sh
+# Fetch latest game data from API
+python3 fetch_config.py
+
+# Commit the updated data
+git add data/configData.json
+git commit -m "Update game data"
+git push
+```
+
+#### Production Environment (Docker)
+
+Due to the read-only mount of the data directory, game data updates must be done locally:
+
+```sh
+# On your local machine:
+python3 fetch_config.py
+git add data/configData.json
+git commit -m "Update game data"
+git push
+
+# On your server:
+git pull
+docker-compose restart
+```
+
+**What gets updated:**
+- ✅ **Market prices**: Every 15 minutes automatically
+- ❌ **Game data** (items/tasks/recipes): Manual update required
+
+See [README_UPDATE.md](README_UPDATE.md) for details about the API changes and update process.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

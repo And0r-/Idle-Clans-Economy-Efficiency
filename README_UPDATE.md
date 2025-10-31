@@ -71,17 +71,48 @@ python3 fetch_config.py
 ```
 
 ### Regelmäßige Updates
-Um die Daten nach zukünftigen Spiel-Updates zu aktualisieren:
+
+**Wichtig:** Die Anwendung aktualisiert **nur Marktpreise** automatisch (alle 15 Minuten). Game-Daten (Items, Tasks, Rezepte) müssen nach Spiel-Updates manuell aktualisiert werden.
+
+#### Lokale Entwicklung
 ```bash
+# 1. Neue Spieldaten von der API holen
 python3 fetch_config.py
+
+# 2. Änderungen committen und pushen
+git add data/configData.json
+git commit -m "Update game data"
+git push
+```
+
+#### Production (Docker)
+Das `data` Verzeichnis ist im Docker-Container read-only gemountet. Updates müssen lokal gemacht werden:
+
+```bash
+# Auf deinem lokalen Rechner:
+python3 fetch_config.py
+git add data/configData.json
+git commit -m "Update game data"
+git push
+
+# Auf dem Server:
+git pull
+docker-compose restart
 ```
 
 ### Anwendung starten
 ```bash
+# Lokal
 python3 main.py
+
+# Docker
+docker-compose up -d
 ```
 
-Die Anwendung lädt die Daten automatisch beim Start und aktualisiert sie alle 15 Minuten.
+**Was wird automatisch aktualisiert:**
+- ✅ Marktpreise: Alle 15 Minuten
+- ✅ Effizienzberechnungen: Alle 15 Minuten (mit neuen Preisen)
+- ❌ Game-Daten (Items/Tasks/Rezepte): Nur manuell via `fetch_config.py`
 
 ## Technische Details
 
