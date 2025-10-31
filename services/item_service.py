@@ -5,12 +5,14 @@ class ItemService:
     def __init__(self, file_path="data/configData.json"):
         self.data: list[Item] = []
         with open(file_path, "r") as json_file:
-            raw_text = json_file.readlines()
-            for i, line in enumerate(raw_text):
-                if line.strip()[:5] == '"_id"':
-                    raw_text.pop(i)
-                    # print("stripped invalid json at line:", i)
-            data = json.loads("".join(raw_text))
+            raw_text = json_file.read()
+            # Clean MongoDB export format (same as TaskService)
+            import re
+            # Remove ObjectId() wrapper
+            raw_text = re.sub(r'ObjectId\("([^"]+)"\)', r'"\1"', raw_text)
+            # Remove _id fields completely
+            raw_text = re.sub(r'^\s*"_id":\s*"[^"]*",?\s*\n', '', raw_text, flags=re.MULTILINE)
+            data = json.loads(raw_text)
             for item in data["Items"]["Items"]:
                 if (
                     not item["CanNotBeTraded"]
