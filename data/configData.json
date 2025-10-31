@@ -1612,1204 +1612,839 @@
       }
     ]
   },
-  "HolidayEventInfoDocument": {
-    "_id": "652f836ee34a26f270fffac4",
+  "Upgrades": {
+    "_id": "624014482729405d901303dd",
     "Items": [
       {
-        "EventType": 1,
-        "CurrencyItemId": 679,
-        "CurrencyGivenForMillionGold": 1.0,
-        "EnableCurrencyFromChests": true,
-        "EnableCurrencyFromBosses": true,
-        "DemiBossCurrencyDropAmountMin": 100000,
-        "DemiBossCurrencyDropAmountMax": 200000,
-        "DemiBossCurrencyDropChance": 10,
-        "KronosCurrencyDropAmountMin": 1000000,
-        "KronosCurrencyDropAmountMax": 2000000,
-        "KronosCurrencyDropChance": 10,
-        "StartMonth": 10,
-        "StartDay": 24,
-        "StartHour": 9,
-        "EndMonth": 11,
-        "EndDay": 7,
-        "EndHour": 9,
-        "InAppPurchases": [
-          {
-            "ProductId": "sku_holiday_event_currency_pack_small",
-            "RewardAmount": 12000000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_medium",
-            "RewardAmount": 32400000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_large",
-            "RewardAmount": 69600000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_gigantic",
-            "RewardAmount": 150000000
-          }
+        "Tiers": 5,
+        "TierNameLocKeys": [
+          "cardboard_box",
+          "tent",
+          "van_down_by_the_river",
+          "small_cabin",
+          "house"
         ],
-        "Milestones": [
+        "TierDescriptionLocKeys": [
+          "cardboard_box_description",
+          "tent_description",
+          "van_down_by_the_river_description",
+          "small_cabin_description",
+          "house_description"
+        ],
+        "TierUnlocks": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "Costs": [
+          100000,
+          500000,
+          2500000,
+          10000000,
+          25000000
+        ],
+        "SkillRequirements": [
           {
-            "ExperienceBoost": 2
+            "Skill": 9,
+            "Requirements": [
+              30,
+              50,
+              70,
+              80,
+              90
+            ]
           },
           {
-            "CurrencyRequirement": 10000000.0,
-            "CurrencyRemovedEveryHour": 100000,
-            "ExperienceBoost": 4
-          },
-          {
-            "CurrencyRequirement": 50000000.0,
-            "CurrencyRemovedEveryHour": 500000,
-            "ExperienceBoost": 6
-          },
-          {
-            "CurrencyRequirement": 250000000.0,
-            "CurrencyRemovedEveryHour": 2500000,
-            "ExperienceBoost": 8
-          },
-          {
-            "CurrencyRequirement": 500000000.0,
-            "CurrencyRemovedEveryHour": 5000000,
-            "ExperienceBoost": 10
-          },
-          {
-            "CurrencyRequirement": 1000000000.0,
-            "CurrencyRemovedEveryHour": 10000000,
-            "ExperienceBoost": 12
-          },
-          {
-            "CurrencyRequirement": 2500000000.0,
-            "CurrencyRemovedEveryHour": 25000000,
-            "ExperienceBoost": 14
-          },
-          {
-            "CurrencyRequirement": 5000000000.0,
-            "CurrencyRemovedEveryHour": 50000000,
-            "ExperienceBoost": 16
-          },
-          {
-            "CurrencyRequirement": 7500000000.0,
-            "CurrencyRemovedEveryHour": 75000000,
-            "ExperienceBoost": 18
-          },
-          {
-            "CurrencyRequirement": 10000000000.0,
-            "CurrencyRemovedEveryHour": 100000000,
-            "ExperienceBoost": 20
+            "Skill": 13,
+            "Requirements": [
+              20,
+              40,
+              60,
+              70,
+              80
+            ]
           }
         ]
       },
       {
-        "EventType": 2,
-        "CurrencyItemId": 680,
-        "CurrencyGivenForMillionGold": 1.0,
-        "EnableCurrencyFromChests": true,
-        "EnableCurrencyFromBosses": true,
-        "DemiBossCurrencyDropAmountMin": 100000,
-        "DemiBossCurrencyDropAmountMax": 200000,
-        "DemiBossCurrencyDropChance": 10,
-        "KronosCurrencyDropAmountMin": 1000000,
-        "KronosCurrencyDropAmountMax": 2000000,
-        "KronosCurrencyDropChance": 10,
-        "StartMonth": 12,
-        "StartDay": 13,
-        "StartHour": 12,
-        "EndMonth": 12,
-        "EndDay": 31,
-        "EndHour": 12,
-        "InAppPurchases": [
-          {
-            "ProductId": "sku_holiday_event_currency_pack_small",
-            "RewardAmount": 12000000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_medium",
-            "RewardAmount": 32400000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_large",
-            "RewardAmount": 69600000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_gigantic",
-            "RewardAmount": 150000000
-          }
+        "Type": 1,
+        "CanPurchaseInBulk": true,
+        "Costs": [
+          5000
+        ]
+      },
+      {
+        "Type": 2,
+        "Tiers": 5,
+        "TierUnlocks": [
+          20,
+          40,
+          60,
+          80,
+          100
         ],
-        "Milestones": [
+        "Costs": [
+          100000,
+          250000,
+          1000000,
+          5000000,
+          20000000
+        ]
+      },
+      {
+        "Type": 3,
+        "Tiers": 5,
+        "TierUnlocks": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "Costs": [
+          100000,
+          250000,
+          1000000,
+          5000000,
+          20000000
+        ]
+      },
+      {
+        "Type": 4,
+        "Tiers": 1,
+        "Costs": [
+          100000
+        ]
+      },
+      {
+        "Type": 5,
+        "Tiers": 1,
+        "Costs": [
+          250000
+        ]
+      },
+      {
+        "Type": 6,
+        "Tiers": 6,
+        "TierUnlocks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "Costs": [
+          200000,
+          1000000,
+          3000000,
+          5000000,
+          10000000,
+          25000000
+        ]
+      },
+      {
+        "Type": 7,
+        "Tiers": 1,
+        "Costs": [
+          50000
+        ]
+      },
+      {
+        "Type": 8,
+        "Tiers": 5,
+        "TierUnlocks": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "Costs": [
+          250000,
+          1000000,
+          3000000,
+          10000000,
+          25000000
+        ]
+      },
+      {
+        "Type": 9,
+        "Tiers": 5,
+        "TierUnlocks": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "Costs": [
+          200000,
+          600000,
+          1500000,
+          5000000,
+          10000000
+        ]
+      },
+      {
+        "Type": 10,
+        "Tiers": 3,
+        "TierUnlocks": [
+          10,
+          20,
+          30
+        ],
+        "Costs": [
+          750000,
+          2500000,
+          10000000
+        ]
+      },
+      {
+        "Type": 11,
+        "Tiers": 5,
+        "TierUnlocks": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "Costs": [
+          1000000,
+          2000000,
+          4000000,
+          7500000,
+          10000000
+        ]
+      },
+      {
+        "Type": 12,
+        "Tiers": 3,
+        "TierUnlocks": [
+          30,
+          60,
+          100
+        ],
+        "Costs": [
+          500000,
+          1000000,
+          2000000
+        ]
+      },
+      {
+        "Type": 13,
+        "Tiers": 6,
+        "TierUnlocks": [
+          15,
+          30,
+          45,
+          60,
+          75,
+          90
+        ],
+        "Costs": [
+          150000,
+          750000,
+          2500000,
+          7500000,
+          20000000,
+          50000000
+        ]
+      },
+      {
+        "Type": 14,
+        "Discontinued": true,
+        "Tiers": 4,
+        "TierUnlocks": [
+          5,
+          10,
+          15,
+          20
+        ],
+        "Costs": [
+          500000,
+          1500000,
+          5000000,
+          10000000
+        ],
+        "ItemCosts": [],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 15,
+        "Tiers": 1,
+        "TierUnlocks": [
+          20
+        ],
+        "Costs": [
+          50000
+        ]
+      },
+      {
+        "Type": 24,
+        "Tiers": 1,
+        "TierUnlocks": [
+          8
+        ],
+        "Costs": [
+          75000
+        ],
+        "CustomRequirementLocKey": "",
+        "DisabledForIronmen": true
+      },
+      {
+        "Type": 25,
+        "Tiers": 1,
+        "Costs": [
+          25000000
+        ]
+      },
+      {
+        "Type": 26,
+        "Tiers": 6,
+        "TierNameLocKeys": [
+          "toolbelt_upgrade_tier_1_name",
+          "toolbelt_upgrade_tier_2_name",
+          "toolbelt_upgrade_tier_3_name",
+          "toolbelt_upgrade_tier_4_name",
+          "toolbelt_upgrade_tier_5_name",
+          "toolbelt_upgrade_tier_6_name"
+        ],
+        "TierDescriptionLocKeys": [
+          "toolbelt_upgrade_tier_1_desc",
+          "toolbelt_upgrade_tier_2_desc",
+          "toolbelt_upgrade_tier_3_desc",
+          "toolbelt_upgrade_tier_4_desc",
+          "toolbelt_upgrade_tier_5_desc",
+          "toolbelt_upgrade_tier_6_desc"
+        ],
+        "TierUnlocks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "Costs": [
+          500000,
+          1000000,
+          2000000,
+          3000000,
+          4000000,
+          5000000
+        ],
+        "SkillRequirements": [
           {
-            "ExperienceBoost": 2
+            "Skill": 11,
+            "Requirements": [
+              0,
+              0,
+              70,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 10000000.0,
-            "CurrencyRemovedEveryHour": 100000,
-            "ExperienceBoost": 4
+            "Skill": 7,
+            "Requirements": [
+              0,
+              0,
+              70,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 50000000.0,
-            "CurrencyRemovedEveryHour": 500000,
-            "ExperienceBoost": 6
+            "Skill": 10,
+            "Requirements": [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 250000000.0,
-            "CurrencyRemovedEveryHour": 2500000,
-            "ExperienceBoost": 8
+            "Skill": 13,
+            "Requirements": [
+              0,
+              70,
+              0,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 500000000.0,
-            "CurrencyRemovedEveryHour": 5000000,
-            "ExperienceBoost": 10
+            "Skill": 8,
+            "Requirements": [
+              70,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 1000000000.0,
-            "CurrencyRemovedEveryHour": 10000000,
-            "ExperienceBoost": 12
+            "Skill": 16,
+            "Requirements": [
+              0,
+              0,
+              0,
+              70,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 2500000000.0,
-            "CurrencyRemovedEveryHour": 25000000,
-            "ExperienceBoost": 14
+            "Skill": 17,
+            "Requirements": [
+              0,
+              0,
+              0,
+              70,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 5000000000.0,
-            "CurrencyRemovedEveryHour": 50000000,
-            "ExperienceBoost": 16
+            "Skill": 19,
+            "Requirements": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              70
+            ]
           },
           {
-            "CurrencyRequirement": 7500000000.0,
-            "CurrencyRemovedEveryHour": 75000000,
-            "ExperienceBoost": 18
+            "Skill": 12,
+            "Requirements": [
+              0,
+              70,
+              0,
+              0,
+              0,
+              0
+            ]
           },
           {
-            "CurrencyRequirement": 10000000000.0,
-            "CurrencyRemovedEveryHour": 100000000,
-            "ExperienceBoost": 20
+            "Skill": 15,
+            "Requirements": [
+              0,
+              0,
+              0,
+              0,
+              70,
+              0
+            ]
+          },
+          {
+            "Skill": 9,
+            "Requirements": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              70
+            ]
+          },
+          {
+            "Skill": 14,
+            "Requirements": [
+              0,
+              0,
+              0,
+              0,
+              70,
+              0
+            ]
           }
         ]
       },
       {
-        "EventType": 3,
-        "CurrencyItemId": 681,
-        "CurrencyGivenForMillionGold": 1.0,
-        "EnableCurrencyFromChests": true,
-        "EnableCurrencyFromBosses": true,
-        "DemiBossCurrencyDropAmountMin": 100000,
-        "DemiBossCurrencyDropAmountMax": 200000,
-        "DemiBossCurrencyDropChance": 10,
-        "KronosCurrencyDropAmountMin": 1000000,
-        "KronosCurrencyDropAmountMax": 2000000,
-        "KronosCurrencyDropChance": 10,
-        "StartMonth": 2,
-        "StartDay": 14,
-        "StartHour": 9,
-        "EndMonth": 2,
-        "EndDay": 28,
-        "EndHour": 9,
-        "InAppPurchases": [
-          {
-            "ProductId": "sku_holiday_event_currency_pack_small",
-            "RewardAmount": 12000000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_medium",
-            "RewardAmount": 32400000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_large",
-            "RewardAmount": 69600000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_gigantic",
-            "RewardAmount": 150000000
-          }
-        ],
-        "Milestones": [
-          {
-            "ExperienceBoost": 2
-          },
-          {
-            "CurrencyRequirement": 10000000.0,
-            "CurrencyRemovedEveryHour": 100000,
-            "ExperienceBoost": 4
-          },
-          {
-            "CurrencyRequirement": 50000000.0,
-            "CurrencyRemovedEveryHour": 500000,
-            "ExperienceBoost": 6
-          },
-          {
-            "CurrencyRequirement": 250000000.0,
-            "CurrencyRemovedEveryHour": 2500000,
-            "ExperienceBoost": 8
-          },
-          {
-            "CurrencyRequirement": 500000000.0,
-            "CurrencyRemovedEveryHour": 5000000,
-            "ExperienceBoost": 10
-          },
-          {
-            "CurrencyRequirement": 1000000000.0,
-            "CurrencyRemovedEveryHour": 10000000,
-            "ExperienceBoost": 12
-          },
-          {
-            "CurrencyRequirement": 2500000000.0,
-            "CurrencyRemovedEveryHour": 25000000,
-            "ExperienceBoost": 14
-          },
-          {
-            "CurrencyRequirement": 5000000000.0,
-            "CurrencyRemovedEveryHour": 50000000,
-            "ExperienceBoost": 16
-          },
-          {
-            "CurrencyRequirement": 7500000000.0,
-            "CurrencyRemovedEveryHour": 75000000,
-            "ExperienceBoost": 18
-          },
-          {
-            "CurrencyRequirement": 10000000000.0,
-            "CurrencyRemovedEveryHour": 100000000,
-            "ExperienceBoost": 20
-          }
+        "Type": 27,
+        "Tiers": 1,
+        "Costs": [
+          3000000
         ]
       },
       {
-        "EventType": 4,
-        "CurrencyItemId": 682,
-        "CurrencyGivenForMillionGold": 1.0,
-        "EnableCurrencyFromChests": true,
-        "EnableCurrencyFromBosses": true,
-        "DemiBossCurrencyDropAmountMin": 100000,
-        "DemiBossCurrencyDropAmountMax": 200000,
-        "DemiBossCurrencyDropChance": 10,
-        "KronosCurrencyDropAmountMin": 1000000,
-        "KronosCurrencyDropAmountMax": 2000000,
-        "KronosCurrencyDropChance": 10,
-        "StartMonth": 4,
-        "StartDay": 8,
-        "StartHour": 10,
-        "EndMonth": 4,
-        "EndDay": 15,
-        "EndHour": 10,
-        "InAppPurchases": [
-          {
-            "ProductId": "sku_holiday_event_currency_pack_small",
-            "RewardAmount": 12000000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_medium",
-            "RewardAmount": 32400000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_large",
-            "RewardAmount": 69600000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_gigantic",
-            "RewardAmount": 150000000
-          }
-        ],
-        "Milestones": [
-          {
-            "ExperienceBoost": 2
-          },
-          {
-            "CurrencyRequirement": 10000000.0,
-            "CurrencyRemovedEveryHour": 100000,
-            "ExperienceBoost": 4
-          },
-          {
-            "CurrencyRequirement": 50000000.0,
-            "CurrencyRemovedEveryHour": 500000,
-            "ExperienceBoost": 6
-          },
-          {
-            "CurrencyRequirement": 250000000.0,
-            "CurrencyRemovedEveryHour": 2500000,
-            "ExperienceBoost": 8
-          },
-          {
-            "CurrencyRequirement": 500000000.0,
-            "CurrencyRemovedEveryHour": 5000000,
-            "ExperienceBoost": 10
-          },
-          {
-            "CurrencyRequirement": 1000000000.0,
-            "CurrencyRemovedEveryHour": 10000000,
-            "ExperienceBoost": 12
-          },
-          {
-            "CurrencyRequirement": 2500000000.0,
-            "CurrencyRemovedEveryHour": 25000000,
-            "ExperienceBoost": 14
-          },
-          {
-            "CurrencyRequirement": 5000000000.0,
-            "CurrencyRemovedEveryHour": 50000000,
-            "ExperienceBoost": 16
-          },
-          {
-            "CurrencyRequirement": 7500000000.0,
-            "CurrencyRemovedEveryHour": 75000000,
-            "ExperienceBoost": 18
-          },
-          {
-            "CurrencyRequirement": 10000000000.0,
-            "CurrencyRemovedEveryHour": 100000000,
-            "ExperienceBoost": 20
-          }
+        "Type": 28,
+        "Tiers": 1,
+        "Costs": [
+          5000000
         ]
       },
       {
-        "EventType": 5,
-        "CurrencyItemId": 892,
-        "CurrencyGivenForMillionGold": 1.0,
-        "EnableCurrencyFromChests": true,
-        "EnableCurrencyFromBosses": true,
-        "DemiBossCurrencyDropAmountMin": 100000,
-        "DemiBossCurrencyDropAmountMax": 200000,
-        "DemiBossCurrencyDropChance": 10,
-        "KronosCurrencyDropAmountMin": 1000000,
-        "KronosCurrencyDropAmountMax": 2000000,
-        "KronosCurrencyDropChance": 10,
-        "StartMonth": 7,
-        "StartDay": 25,
-        "StartHour": 8,
-        "EndMonth": 8,
-        "EndDay": 8,
-        "EndHour": 8,
-        "InAppPurchases": [
+        "Type": 29,
+        "Tiers": 1,
+        "Costs": [
+          5000000
+        ]
+      },
+      {
+        "Type": 34,
+        "Tiers": 15,
+        "CanPurchaseInBulk": true,
+        "TierUnlocks": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "Costs": [
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000,
+          1000000
+        ]
+      },
+      {
+        "Type": 36,
+        "Costs": [
+          15000000
+        ],
+        "ItemCosts": [],
+        "CustomRequirementLocKey": "upgrade_kronos_protection_requirement"
+      },
+      {
+        "Type": 39,
+        "ItemCosts": [
           {
-            "ProductId": "sku_holiday_event_currency_pack_small",
-            "RewardAmount": 12000000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_medium",
-            "RewardAmount": 32400000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_large",
-            "RewardAmount": 69600000
-          },
-          {
-            "ProductId": "sku_holiday_event_currency_pack_gigantic",
-            "RewardAmount": 150000000
+            "Item": 692,
+            "Amount": 1
           }
         ],
-        "Milestones": [
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 40,
+        "ItemCosts": [
           {
-            "ExperienceBoost": 2
-          },
-          {
-            "CurrencyRequirement": 10000000.0,
-            "CurrencyRemovedEveryHour": 100000,
-            "ExperienceBoost": 4
-          },
-          {
-            "CurrencyRequirement": 50000000.0,
-            "CurrencyRemovedEveryHour": 500000,
-            "ExperienceBoost": 6
-          },
-          {
-            "CurrencyRequirement": 250000000.0,
-            "CurrencyRemovedEveryHour": 2500000,
-            "ExperienceBoost": 8
-          },
-          {
-            "CurrencyRequirement": 500000000.0,
-            "CurrencyRemovedEveryHour": 5000000,
-            "ExperienceBoost": 10
-          },
-          {
-            "CurrencyRequirement": 1000000000.0,
-            "CurrencyRemovedEveryHour": 10000000,
-            "ExperienceBoost": 12
-          },
-          {
-            "CurrencyRequirement": 2500000000.0,
-            "CurrencyRemovedEveryHour": 25000000,
-            "ExperienceBoost": 14
-          },
-          {
-            "CurrencyRequirement": 5000000000.0,
-            "CurrencyRemovedEveryHour": 50000000,
-            "ExperienceBoost": 16
-          },
-          {
-            "CurrencyRequirement": 7500000000.0,
-            "CurrencyRemovedEveryHour": 75000000,
-            "ExperienceBoost": 20
-          },
-          {
-            "CurrencyRequirement": 10000000000.0,
-            "CurrencyRemovedEveryHour": 100000000,
-            "ExperienceBoost": 25
+            "Item": 693,
+            "Amount": 1
           }
-        ]
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 41,
+        "ItemCosts": [
+          {
+            "Item": 694,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 10,
+            "Requirements": [
+              95
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 42,
+        "ItemCosts": [
+          {
+            "Item": 695,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 8,
+            "Requirements": [
+              95
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 43,
+        "ItemCosts": [
+          {
+            "Item": 696,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 7,
+            "Requirements": [
+              90
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 44,
+        "ItemCosts": [
+          {
+            "Item": 697,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 7,
+            "Requirements": [
+              70
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 45,
+        "ItemCosts": [
+          {
+            "Item": 698,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 19,
+            "Requirements": [
+              70
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 46,
+        "ItemCosts": [
+          {
+            "Item": 699,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 19,
+            "Requirements": [
+              70
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 47,
+        "Tiers": 1,
+        "TierUnlocks": [
+          25
+        ],
+        "Costs": [
+          15000000
+        ],
+        "ItemCosts": [],
+        "CustomRequirementLocKey": "",
+        "DisabledForIronmen": true
+      },
+      {
+        "Type": 48,
+        "Tiers": 1,
+        "Costs": [
+          10000000
+        ],
+        "ItemCosts": [],
+        "SkillRequirements": [
+          {
+            "Skill": 11,
+            "Requirements": [
+              90
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 49,
+        "TierUnlocks": [
+          10
+        ],
+        "ItemCosts": [
+          {
+            "Item": 745,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 8,
+            "Requirements": [
+              75
+            ]
+          },
+          {
+            "Skill": 9,
+            "Requirements": [
+              75
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 50,
+        "TierUnlocks": [
+          10
+        ],
+        "ItemCosts": [
+          {
+            "Item": 746,
+            "Amount": 1
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 53,
+        "Tiers": 1,
+        "TierUnlocks": [
+          10
+        ],
+        "Costs": [
+          10000000
+        ],
+        "ItemCosts": [
+          {
+            "Item": 836,
+            "Amount": 1
+          },
+          {
+            "Item": 837,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 7,
+            "Requirements": [
+              90
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 55,
+        "Tiers": 1,
+        "ItemCosts": [
+          {
+            "Item": 881,
+            "Amount": 1
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 56,
+        "Tiers": 1,
+        "TierUnlocks": [
+          10
+        ],
+        "ItemCosts": [
+          {
+            "Item": 884,
+            "Amount": 1
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 57,
+        "Tiers": 1,
+        "TierUnlocks": [
+          50
+        ],
+        "Costs": [
+          25000000
+        ],
+        "ItemCosts": [
+          {
+            "Item": 890,
+            "Amount": 1
+          }
+        ],
+        "SkillRequirements": [
+          {
+            "Skill": 10,
+            "Requirements": [
+              100
+            ]
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 58,
+        "Tiers": 1,
+        "Costs": [
+          75000000
+        ],
+        "ItemCosts": [
+          {
+            "Item": 891,
+            "Amount": 1
+          }
+        ],
+        "CustomRequirementLocKey": ""
+      },
+      {
+        "Type": 59,
+        "TierUnlocks": [
+          30
+        ],
+        "ItemCosts": [
+          {
+            "Item": 899,
+            "Amount": 1
+          }
+        ],
+        "CustomRequirementLocKey": ""
       }
     ]
-  },
-  "ClientSettings": {
-    "_id": "627c9dbcf6464179a9829dd7",
-    "Settings": {
-      "LeaderboardsEnabled": true,
-      "PlayerShopRefreshCooldownSeconds": 600,
-      "MaxPlayerShopTradingHistoryEntries": 0,
-      "ItemSellMinimumGoldValueForConfirmationPopup": 2500,
-      "LocalNotificationRetentionReminderDays": [
-        3,
-        7,
-        14,
-        30
-      ],
-      "MaxDropPercentageToShowRareLootNotification": 1.0,
-      "TopClanCountDisplayedInGuildPage": 10,
-      "DefaultFpsTarget": 60
-    }
-  },
-  "MinigameData": {
-    "_id": "62efa8f9b36f273c1b1b5315",
-    "Data": {
-      "MaxRewardAmountPerEvent": 6,
-      "GatheringEventMiningLoot": [
-        {
-          "ItemId": 591,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 592,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 593,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 30,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 31,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 35,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 32,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 33,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 25,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 39,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 41,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 15,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 7.0
-        }
-      ],
-      "GatheringEventFishingLoot": [
-        {
-          "ItemId": 594,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 595,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 596,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 12,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 13,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 35,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 14,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 15,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 157,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 15,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 161,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 10,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 7.0
-        }
-      ],
-      "GatheringEventWoodcuttingLoot": [
-        {
-          "ItemId": 588,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 589,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 590,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 1,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 6,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 35,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 7,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 8,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 25,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 2,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 9,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 15,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 7.0
-        }
-      ],
-      "GatheringEventForagingLoot": [
-        {
-          "ItemId": 597,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 598,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 599,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 165,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 138,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 35,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 273,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 122,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 25,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 274,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 125,
-          "ItemAmountMin": 5,
-          "ItemAmountMax": 15,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 7.0
-        }
-      ],
-      "CraftingEventCraftingLoot": [
-        {
-          "ItemId": 273,
-          "ItemAmountMin": 30,
-          "ItemAmountMax": 60,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 274,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 275,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 25,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 225,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 2.0
-        },
-        {
-          "ItemId": 226,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 227,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 245,
-          "ItemAmountMin": 30,
-          "ItemAmountMax": 90,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 260,
-          "ItemAmountMin": 100,
-          "ItemAmountMax": 300,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 261,
-          "ItemAmountMin": 75,
-          "ItemAmountMax": 250,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 262,
-          "ItemAmountMin": 50,
-          "ItemAmountMax": 200,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 6.0
-        }
-      ],
-      "CraftingEventSmithingLoot": [
-        {
-          "ItemId": 34,
-          "ItemAmountMin": 30,
-          "ItemAmountMax": 90,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 35,
-          "ItemAmountMin": 25,
-          "ItemAmountMax": 80,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 36,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 70,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 37,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 60,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 38,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 19,
-          "ItemAmountMin": 2000,
-          "ItemAmountMax": 10000,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        }
-      ],
-      "CraftingEventCookingLoot": [
-        {
-          "ItemId": 164,
-          "ItemAmountMin": 30,
-          "ItemAmountMax": 75,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 104,
-          "ItemAmountMin": 25,
-          "ItemAmountMax": 65,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 105,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 60,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 106,
-          "ItemAmountMin": 15,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 158,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 12.0
-        },
-        {
-          "ItemId": 114,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 15.0
-        },
-        {
-          "ItemId": 115,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 896,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 897,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        },
-        {
-          "ItemId": 898,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 1.0
-        }
-      ],
-      "CraftingEventFarmingLoot": [
-        {
-          "ItemId": 132,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 133,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 25,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 134,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 135,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 136,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 20,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        }
-      ],
-      "CraftingEventBrewingLoot": [
-        {
-          "ItemId": 134,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 118,
-          "ItemAmountMin": 30,
-          "ItemAmountMax": 80,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 20.0
-        },
-        {
-          "ItemId": 1,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 60,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 273,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 6,
-          "ItemAmountMin": 20,
-          "ItemAmountMax": 50,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 135,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 274,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 2,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 40,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        },
-        {
-          "ItemId": 9,
-          "ItemAmountMin": 10,
-          "ItemAmountMax": 30,
-          "CanBeRemovedFromDropTable": true,
-          "Weight": 10.0
-        }
-      ]
-    }
-  },
-  "SharedSettings": {
-    "_id": "627c99de1efa553a4bec47fc",
-    "Settings": {
-      "RequiredBuildVersion": "1.6100",
-      "LatestBuildVersion": "1.6100",
-      "ConfigVersion": 321,
-      "EnemyRespawnTimeMS": 2550,
-      "CombatExpPerHit": 4,
-      "HealthExpPerHit": 1,
-      "StarterInventorySlotsUnlockedAmount": 60,
-      "MaxAvailableInventorySlots": 250,
-      "BaseClanVaultSpace": 8,
-      "PremiumOneMonthItemId": 336,
-      "PremiumPermanentItemId": 337,
-      "TasksLockedBehindPremium": [
-        10,
-        12,
-        14
-      ],
-      "BaseOfflineProgressCapHours": 12,
-      "OfflineHoursFromPremium": 6,
-      "ChatEnabled": true,
-      "UnarmedAttackSpeedMS": 3600,
-      "MaxPlayerShopSlots": 6,
-      "PlayerShopSlotsWithoutPremium": 3,
-      "ClanCreditsPerClanTaskCompletion": 16,
-      "TutorialCombatLoot": [
-        {
-          "ItemId": 19,
-          "ItemAmount": 250
-        },
-        {
-          "ItemId": 49,
-          "ItemAmount": 1
-        },
-        {
-          "ItemId": 50,
-          "ItemAmount": 1
-        },
-        {
-          "ItemId": 35,
-          "ItemAmount": 6
-        },
-        {
-          "ItemId": 159,
-          "ItemAmount": 20
-        },
-        {
-          "ItemId": 165,
-          "ItemAmount": 12
-        }
-      ],
-      "AccountAgeHoursRequiredToSellRMItems": 0,
-      "CombatNpcWeaknessDefenceReductionPct": 20,
-      "CombatNpcWeaknessDamageBoostPct": 20,
-      "MinigameSkillAttackInterval": 3000,
-      "MinigameDurationMinutes": 2,
-      "CombatExperienceEventExpMultiplier": 6,
-      "DailyAdsLimit": 4,
-      "DailyAdsBoostDurationMinutes": 120,
-      "DailyAdsWatchCooldownMinutes": 120,
-      "DailyAdsExperienceBoostPct": 30,
-      "TotalLevelRequirementForClanCreation": 100,
-      "GoldCostForClanCreation": 10000,
-      "GuildMinCharacters": 3,
-      "GuildMaxCharacters": 18,
-      "GuildMaxMembers": 20,
-      "PremiumClanCreditBoostPercentage": 25,
-      "ClanCreditsPerMinigameParticipant": 4,
-      "ClanCreditsPerBossKill": 12,
-      "ClanCreditsPerRefinement": [
-        {
-          "RefinementType": 2,
-          "Credits": 2
-        },
-        {
-          "RefinementType": 3,
-          "Credits": 4
-        },
-        {
-          "RefinementType": 4,
-          "Credits": 10
-        },
-        {
-          "RefinementType": 5,
-          "Credits": 20
-        },
-        {
-          "RefinementType": 6,
-          "Credits": 40
-        },
-        {
-          "RefinementType": 7,
-          "Credits": 120
-        },
-        {
-          "RefinementType": 8,
-          "Credits": 500
-        }
-      ],
-      "ClanCreditsPerChest": [
-        {
-          "ChestName": "common_chest",
-          "Credits": 2
-        },
-        {
-          "ChestName": "rare_chest",
-          "Credits": 4
-        },
-        {
-          "ChestName": "exceptional_chest",
-          "Credits": 10
-        }
-      ],
-      "IAPInventorySpacePerPurchase": 30,
-      "IAPMaxPurchasableInventorySpace": 300,
-      "IAPMinigameBoostDurationHours": 24,
-      "IAPGemstoneBoostDurationHours": 12,
-      "IAPClanVaultSpacePerPurchase": 4,
-      "IAPMaxPurchasableClanVaultSpace": 200,
-      "IAPMaxPurchasableClanVaultSpaceIronman": 80,
-      "IAPCreditBoostDurationHours": 72,
-      "MaxSkillLevel": 120,
-      "MaxChatMessageCharacters": 100,
-      "ChatTotalLevelRequirement": 100,
-      "UntradeablePremiumUnlockCost": 1000000,
-      "MaxWhiteListedPlayers": 20,
-      "MaxPlayerSkillExperience": 500000000,
-      "GuildAmountOfLatestLogsStored": 100,
-      "GuildAmountOfPlayerLogsStored": 25,
-      "RaidsStarterItems": [
-        176,
-        177,
-        178,
-        179,
-        180,
-        181,
-        208,
-        209,
-        220
-      ],
-      "RaidHealthPercentageToRecoverToAfterBattle": 25,
-      "CreditsPerReckoningOfTheGodsRun": 3,
-      "MaxPlayerGold": 2000000000.0,
-      "LeaderInactiveDaysUntilDeputyCanClaimLeadership": 28,
-      "ExperienceBoostPercentagePerDailyGatheringEventParticipant": 2,
-      "HealthBoostPercentagePerParticipantInClanCombatExperienceEvent": 5,
-      "PlayerShopTaxPercentage": 1.0,
-      "LeaderInactiveDaysUntilRegularMemberCanClaimLeadership": 90,
-      "TwoFactorAuthenticationEnabled": true,
-      "MaximumItemsInWithdrawalPerPlayer": 20,
-      "MaximumTotalItemsInWithdrawal": 60,
-      "WeeklyQuestCompletionModifier": 20,
-      "WeeklyQuestRewardModifier": 5,
-      "PetTaskLengthModifier": 4,
-      "PlayerShareOfPetTaskWithoutCostsPercentage": 100,
-      "PlayerShareOfPetTaskWithCostsPercentage": 100,
-      "CombatPetExperienceSharePercentage": 20,
-      "ClanCupCreditRewards": [
-        5000,
-        3500,
-        3000,
-        2500,
-        2000,
-        1500,
-        1000,
-        750,
-        500,
-        250
-      ],
-      "ClanCupCreditRewardsIronman": [
-        2500,
-        1750,
-        1500,
-        1250,
-        1000,
-        750,
-        500,
-        375,
-        250,
-        125
-      ],
-      "AfkRaidTimeModifier": 5.0,
-      "MaxAfkRaidDays": 3
-    }
   },
   "Houses": {
     "_id": "61fe5fdede116bd96ca253ab",
@@ -3618,6 +3253,561 @@
       "EnemyHealth": 1000
     }
   ],
+  "MinigameData": {
+    "_id": "62efa8f9b36f273c1b1b5315",
+    "Data": {
+      "MaxRewardAmountPerEvent": 6,
+      "GatheringEventMiningLoot": [
+        {
+          "ItemId": 591,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 592,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 593,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 30,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 31,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 35,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 32,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 33,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 25,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 39,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 41,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 15,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 7.0
+        }
+      ],
+      "GatheringEventFishingLoot": [
+        {
+          "ItemId": 594,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 595,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 596,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 12,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 13,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 35,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 14,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 15,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 157,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 15,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 161,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 10,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 7.0
+        }
+      ],
+      "GatheringEventWoodcuttingLoot": [
+        {
+          "ItemId": 588,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 589,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 590,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 1,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 6,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 35,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 7,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 8,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 25,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 2,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 9,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 15,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 7.0
+        }
+      ],
+      "GatheringEventForagingLoot": [
+        {
+          "ItemId": 597,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 598,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 599,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 165,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 138,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 35,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 273,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 122,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 25,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 274,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 125,
+          "ItemAmountMin": 5,
+          "ItemAmountMax": 15,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 7.0
+        }
+      ],
+      "CraftingEventCraftingLoot": [
+        {
+          "ItemId": 273,
+          "ItemAmountMin": 30,
+          "ItemAmountMax": 60,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 274,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 275,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 25,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 225,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 2.0
+        },
+        {
+          "ItemId": 226,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 227,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 245,
+          "ItemAmountMin": 30,
+          "ItemAmountMax": 90,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 260,
+          "ItemAmountMin": 100,
+          "ItemAmountMax": 300,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 261,
+          "ItemAmountMin": 75,
+          "ItemAmountMax": 250,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 262,
+          "ItemAmountMin": 50,
+          "ItemAmountMax": 200,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 6.0
+        }
+      ],
+      "CraftingEventSmithingLoot": [
+        {
+          "ItemId": 34,
+          "ItemAmountMin": 30,
+          "ItemAmountMax": 90,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 35,
+          "ItemAmountMin": 25,
+          "ItemAmountMax": 80,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 36,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 70,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 37,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 60,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 38,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 19,
+          "ItemAmountMin": 2000,
+          "ItemAmountMax": 10000,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        }
+      ],
+      "CraftingEventCookingLoot": [
+        {
+          "ItemId": 164,
+          "ItemAmountMin": 30,
+          "ItemAmountMax": 75,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 104,
+          "ItemAmountMin": 25,
+          "ItemAmountMax": 65,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 105,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 60,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 106,
+          "ItemAmountMin": 15,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 158,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 12.0
+        },
+        {
+          "ItemId": 114,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 15.0
+        },
+        {
+          "ItemId": 115,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 896,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 897,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        },
+        {
+          "ItemId": 898,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 1.0
+        }
+      ],
+      "CraftingEventFarmingLoot": [
+        {
+          "ItemId": 132,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 133,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 25,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 134,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 135,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 136,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 20,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        }
+      ],
+      "CraftingEventBrewingLoot": [
+        {
+          "ItemId": 134,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 118,
+          "ItemAmountMin": 30,
+          "ItemAmountMax": 80,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 20.0
+        },
+        {
+          "ItemId": 1,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 60,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 273,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 6,
+          "ItemAmountMin": 20,
+          "ItemAmountMax": 50,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 135,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 274,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 2,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 40,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        },
+        {
+          "ItemId": 9,
+          "ItemAmountMin": 10,
+          "ItemAmountMax": 30,
+          "CanBeRemovedFromDropTable": true,
+          "Weight": 10.0
+        }
+      ]
+    }
+  },
   "ClanUpgrades": {
     "_id": "634ab6c34f8b7033690d58ed",
     "Items": [
@@ -4192,6 +4382,840 @@
         "ItemCosts": [],
         "CustomRequirementLocKey": "",
         "ClanCreditCost": 250000
+      }
+    ]
+  },
+  "ClientSettings": {
+    "_id": "627c9dbcf6464179a9829dd7",
+    "Settings": {
+      "LeaderboardsEnabled": true,
+      "PlayerShopRefreshCooldownSeconds": 600,
+      "MaxPlayerShopTradingHistoryEntries": 0,
+      "ItemSellMinimumGoldValueForConfirmationPopup": 2500,
+      "LocalNotificationRetentionReminderDays": [
+        3,
+        7,
+        14,
+        30
+      ],
+      "MaxDropPercentageToShowRareLootNotification": 1.0,
+      "TopClanCountDisplayedInGuildPage": 10,
+      "DefaultFpsTarget": 60
+    }
+  },
+  "PotionData": {
+    "_id": "63636307dc1854b598540a55",
+    "Items": [
+      {
+        "PotionId": 0,
+        "PotionType": 1,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 10,
+        "Duration": 601
+      },
+      {
+        "PotionId": 1,
+        "PotionType": 2,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 5,
+        "Duration": 300
+      },
+      {
+        "PotionId": 2,
+        "PotionType": 3,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 40,
+        "Duration": 600
+      },
+      {
+        "PotionId": 3,
+        "PotionType": 4,
+        "ChanceOfTriggeringEffect": 10,
+        "EffectStrengthPercentage": 0,
+        "Duration": 180
+      },
+      {
+        "PotionId": 4,
+        "PotionType": 5,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 10,
+        "Duration": 600
+      },
+      {
+        "PotionId": 5,
+        "PotionType": 6,
+        "ChanceOfTriggeringEffect": 15,
+        "EffectStrengthPercentage": 0,
+        "Duration": 900
+      },
+      {
+        "PotionId": 6,
+        "PotionType": 7,
+        "ChanceOfTriggeringEffect": 25,
+        "EffectStrengthPercentage": 105,
+        "Duration": 600
+      },
+      {
+        "PotionId": 7,
+        "PotionType": 8,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 20,
+        "Duration": 600
+      },
+      {
+        "PotionId": 8,
+        "PotionType": 9,
+        "ChanceOfTriggeringEffect": 0,
+        "EffectStrengthPercentage": 50,
+        "Duration": 600
+      },
+      {
+        "PotionId": 9,
+        "PotionType": 10,
+        "ChanceOfTriggeringEffect": 100,
+        "EffectStrengthPercentage": 75,
+        "Duration": 60
+      }
+    ]
+  },
+  "SharedSettings": {
+    "_id": "627c99de1efa553a4bec47fc",
+    "Settings": {
+      "RequiredBuildVersion": "1.6100",
+      "LatestBuildVersion": "1.6100",
+      "ConfigVersion": 321,
+      "EnemyRespawnTimeMS": 2550,
+      "CombatExpPerHit": 4,
+      "HealthExpPerHit": 1,
+      "StarterInventorySlotsUnlockedAmount": 60,
+      "MaxAvailableInventorySlots": 250,
+      "BaseClanVaultSpace": 8,
+      "PremiumOneMonthItemId": 336,
+      "PremiumPermanentItemId": 337,
+      "TasksLockedBehindPremium": [
+        10,
+        12,
+        14
+      ],
+      "BaseOfflineProgressCapHours": 12,
+      "OfflineHoursFromPremium": 6,
+      "ChatEnabled": true,
+      "UnarmedAttackSpeedMS": 3600,
+      "MaxPlayerShopSlots": 6,
+      "PlayerShopSlotsWithoutPremium": 3,
+      "ClanCreditsPerClanTaskCompletion": 16,
+      "TutorialCombatLoot": [
+        {
+          "ItemId": 19,
+          "ItemAmount": 250
+        },
+        {
+          "ItemId": 49,
+          "ItemAmount": 1
+        },
+        {
+          "ItemId": 50,
+          "ItemAmount": 1
+        },
+        {
+          "ItemId": 35,
+          "ItemAmount": 6
+        },
+        {
+          "ItemId": 159,
+          "ItemAmount": 20
+        },
+        {
+          "ItemId": 165,
+          "ItemAmount": 12
+        }
+      ],
+      "AccountAgeHoursRequiredToSellRMItems": 0,
+      "CombatNpcWeaknessDefenceReductionPct": 20,
+      "CombatNpcWeaknessDamageBoostPct": 20,
+      "MinigameSkillAttackInterval": 3000,
+      "MinigameDurationMinutes": 2,
+      "CombatExperienceEventExpMultiplier": 6,
+      "DailyAdsLimit": 4,
+      "DailyAdsBoostDurationMinutes": 120,
+      "DailyAdsWatchCooldownMinutes": 120,
+      "DailyAdsExperienceBoostPct": 30,
+      "TotalLevelRequirementForClanCreation": 100,
+      "GoldCostForClanCreation": 10000,
+      "GuildMinCharacters": 3,
+      "GuildMaxCharacters": 18,
+      "GuildMaxMembers": 20,
+      "PremiumClanCreditBoostPercentage": 25,
+      "ClanCreditsPerMinigameParticipant": 4,
+      "ClanCreditsPerBossKill": 12,
+      "ClanCreditsPerRefinement": [
+        {
+          "RefinementType": 2,
+          "Credits": 2
+        },
+        {
+          "RefinementType": 3,
+          "Credits": 4
+        },
+        {
+          "RefinementType": 4,
+          "Credits": 10
+        },
+        {
+          "RefinementType": 5,
+          "Credits": 20
+        },
+        {
+          "RefinementType": 6,
+          "Credits": 40
+        },
+        {
+          "RefinementType": 7,
+          "Credits": 120
+        },
+        {
+          "RefinementType": 8,
+          "Credits": 500
+        }
+      ],
+      "ClanCreditsPerChest": [
+        {
+          "ChestName": "common_chest",
+          "Credits": 2
+        },
+        {
+          "ChestName": "rare_chest",
+          "Credits": 4
+        },
+        {
+          "ChestName": "exceptional_chest",
+          "Credits": 10
+        }
+      ],
+      "IAPInventorySpacePerPurchase": 30,
+      "IAPMaxPurchasableInventorySpace": 300,
+      "IAPMinigameBoostDurationHours": 24,
+      "IAPGemstoneBoostDurationHours": 12,
+      "IAPClanVaultSpacePerPurchase": 4,
+      "IAPMaxPurchasableClanVaultSpace": 200,
+      "IAPMaxPurchasableClanVaultSpaceIronman": 80,
+      "IAPCreditBoostDurationHours": 72,
+      "MaxSkillLevel": 120,
+      "MaxChatMessageCharacters": 100,
+      "ChatTotalLevelRequirement": 100,
+      "UntradeablePremiumUnlockCost": 1000000,
+      "MaxWhiteListedPlayers": 20,
+      "MaxPlayerSkillExperience": 500000000,
+      "GuildAmountOfLatestLogsStored": 100,
+      "GuildAmountOfPlayerLogsStored": 25,
+      "RaidsStarterItems": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        208,
+        209,
+        220
+      ],
+      "RaidHealthPercentageToRecoverToAfterBattle": 25,
+      "CreditsPerReckoningOfTheGodsRun": 3,
+      "MaxPlayerGold": 2000000000.0,
+      "LeaderInactiveDaysUntilDeputyCanClaimLeadership": 28,
+      "ExperienceBoostPercentagePerDailyGatheringEventParticipant": 2,
+      "HealthBoostPercentagePerParticipantInClanCombatExperienceEvent": 5,
+      "PlayerShopTaxPercentage": 1.0,
+      "LeaderInactiveDaysUntilRegularMemberCanClaimLeadership": 90,
+      "TwoFactorAuthenticationEnabled": true,
+      "MaximumItemsInWithdrawalPerPlayer": 20,
+      "MaximumTotalItemsInWithdrawal": 60,
+      "WeeklyQuestCompletionModifier": 20,
+      "WeeklyQuestRewardModifier": 5,
+      "PetTaskLengthModifier": 4,
+      "PlayerShareOfPetTaskWithoutCostsPercentage": 100,
+      "PlayerShareOfPetTaskWithCostsPercentage": 100,
+      "CombatPetExperienceSharePercentage": 20,
+      "ClanCupCreditRewards": [
+        5000,
+        3500,
+        3000,
+        2500,
+        2000,
+        1500,
+        1000,
+        750,
+        500,
+        250
+      ],
+      "ClanCupCreditRewardsIronman": [
+        2500,
+        1750,
+        1500,
+        1250,
+        1000,
+        750,
+        500,
+        375,
+        250,
+        125
+      ],
+      "AfkRaidTimeModifier": 5.0,
+      "MaxAfkRaidDays": 3
+    }
+  },
+  "ExterminatingInfo": {
+    "_id": "68e36f3c8a903b8ae09eb6d6",
+    "ExterminatingExperts": [
+      {
+        "_id": 0,
+        "NameLocKey": "eldric",
+        "DescriptionLocKey": "eldric_description",
+        "DifficultyLocKey": "very_easy",
+        "HealthLevelRequirement": 1,
+        "PointsPerAssignment": 5,
+        "Assignments": [
+          {
+            "MonsterName": "wolf",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 60,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "boar",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 60,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "bear",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 60,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "scorpion",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 60,
+            "Weight": 7
+          },
+          {
+            "MonsterName": "snake",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 60,
+            "Weight": 7
+          },
+          {
+            "MonsterName": "crocodile",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 50,
+            "Weight": 7
+          },
+          {
+            "MonsterName": "goblin",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 50,
+            "Weight": 6
+          },
+          {
+            "MonsterName": "cave_dweller",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 50,
+            "Weight": 6
+          },
+          {
+            "MonsterName": "orange_dragon",
+            "LevelRequirement": 1,
+            "MinAmount": 20,
+            "MaxAmount": 50,
+            "Weight": 5
+          }
+        ]
+      },
+      {
+        "_id": 1,
+        "NameLocKey": "morgana",
+        "DescriptionLocKey": "morgana_description",
+        "DifficultyLocKey": "easy",
+        "HealthLevelRequirement": 25,
+        "PointsPerAssignment": 10,
+        "Assignments": [
+          {
+            "MonsterName": "troll",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "wandering_warrior",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "druid",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "gorilla",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "giant",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "green_dragon",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "golem",
+            "LevelRequirement": 30,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          },
+          {
+            "MonsterName": "mammoth",
+            "LevelRequirement": 40,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          },
+          {
+            "MonsterName": "basilisk",
+            "LevelRequirement": 50,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          }
+        ]
+      },
+      {
+        "_id": 2,
+        "NameLocKey": "alaric",
+        "DescriptionLocKey": "alaric_description",
+        "DifficultyLocKey": "moderate",
+        "HealthLevelRequirement": 40,
+        "PointsPerAssignment": 15,
+        "Assignments": [
+          {
+            "MonsterName": "ghost",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "zombie",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "possessed_bear",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "witch",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "demon",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "red_dragon",
+            "LevelRequirement": 1,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "banshee",
+            "LevelRequirement": 60,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          },
+          {
+            "MonsterName": "gargoyle",
+            "LevelRequirement": 65,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          },
+          {
+            "MonsterName": "cockatrice",
+            "LevelRequirement": 70,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 4
+          }
+        ]
+      },
+      {
+        "_id": 3,
+        "NameLocKey": "thorne",
+        "DescriptionLocKey": "thorne_description",
+        "DifficultyLocKey": "medium",
+        "HealthLevelRequirement": 60,
+        "PointsPerAssignment": 20,
+        "Assignments": [
+          {
+            "MonsterName": "mad_wizard",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "vampire",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "werewolf",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "dark_wizard",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "cerberus",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "black_dragon",
+            "LevelRequirement": 1,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "roc",
+            "LevelRequirement": 75,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 3
+          },
+          {
+            "MonsterName": "dire_wolf",
+            "LevelRequirement": 79,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 3
+          },
+          {
+            "MonsterName": "behemoth",
+            "LevelRequirement": 83,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 3
+          },
+          {
+            "MonsterName": "wyvern",
+            "LevelRequirement": 87,
+            "MinAmount": 125,
+            "MaxAmount": 250,
+            "Weight": 3
+          }
+        ]
+      },
+      {
+        "_id": 4,
+        "NameLocKey": "sila",
+        "DescriptionLocKey": "sila_description",
+        "DifficultyLocKey": "hard",
+        "HealthLevelRequirement": 80,
+        "PointsPerAssignment": 30,
+        "Assignments": [
+          {
+            "MonsterName": "hydra",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "manticore",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "minotaur",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "centaur",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "necromancer",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "mutated_dragon",
+            "LevelRequirement": 1,
+            "MinAmount": 75,
+            "MaxAmount": 150,
+            "Weight": 10
+          },
+          {
+            "MonsterName": "drake",
+            "LevelRequirement": 91,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "naga",
+            "LevelRequirement": 95,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "kraken",
+            "LevelRequirement": 99,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "fury",
+            "LevelRequirement": 102,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "phoenix",
+            "LevelRequirement": 105,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "grimwark",
+            "LevelRequirement": 110,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          },
+          {
+            "MonsterName": "otherworldly_executioner",
+            "LevelRequirement": 115,
+            "MinAmount": 100,
+            "MaxAmount": 200,
+            "Weight": 2
+          }
+        ]
+      }
+    ],
+    "ShopUnlocks": [
+      {
+        "UnlockType": 1,
+        "PurchaseLimitScope": 0,
+        "Repeating": true,
+        "Cost": 30,
+        "HasToggle": false,
+        "AssociatedSetting": 0,
+        "NameLocKey": "cancel_assignment_title",
+        "DescriptionLocKey": "cancel_assignment_desc"
+      },
+      {
+        "UnlockType": 5,
+        "PurchaseLimitScope": 1,
+        "Repeating": true,
+        "Cost": 100,
+        "HasToggle": false,
+        "AssociatedSetting": 6,
+        "NameLocKey": "supply_crate",
+        "DescriptionLocKey": ""
+      },
+      {
+        "UnlockType": 2,
+        "PurchaseLimitScope": 0,
+        "Repeating": false,
+        "Cost": 500,
+        "HasToggle": true,
+        "AssociatedSetting": 3,
+        "NameLocKey": "exterminating_auto_complete",
+        "DescriptionLocKey": "exterminating_auto_complete_desc"
+      },
+      {
+        "UnlockType": 3,
+        "PurchaseLimitScope": 0,
+        "Repeating": false,
+        "Cost": 5000,
+        "HasToggle": true,
+        "AssociatedSetting": 4,
+        "NameLocKey": "exterminating_boss_extension",
+        "DescriptionLocKey": "exterminating_boss_extension_desc"
+      },
+      {
+        "UnlockType": 4,
+        "PurchaseLimitScope": 0,
+        "Repeating": false,
+        "Cost": 25000,
+        "HasToggle": false,
+        "AssociatedSetting": 6,
+        "NameLocKey": "exterminating_bloodmoon_equipment",
+        "DescriptionLocKey": "exterminating_bloodmoon_equipment_description"
+      }
+    ],
+    "SupplyCrateLoot": [
+      {
+        "ItemId": 130,
+        "ItemAmountMin": 10,
+        "ItemAmountMax": 20,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 131,
+        "ItemAmountMin": 10,
+        "ItemAmountMax": 20,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 400,
+        "ItemAmountMin": 10,
+        "ItemAmountMax": 20,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 402,
+        "ItemAmountMin": 5,
+        "ItemAmountMax": 10,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 404,
+        "ItemAmountMin": 5,
+        "ItemAmountMax": 10,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 5.0
+      },
+      {
+        "ItemId": 247,
+        "ItemAmountMin": 50,
+        "ItemAmountMax": 100,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 248,
+        "ItemAmountMin": 50,
+        "ItemAmountMax": 100,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 249,
+        "ItemAmountMin": 50,
+        "ItemAmountMax": 100,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 5.0
+      },
+      {
+        "ItemId": 263,
+        "ItemAmountMin": 500,
+        "ItemAmountMax": 1000,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 264,
+        "ItemAmountMin": 400,
+        "ItemAmountMax": 800,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 10.0
+      },
+      {
+        "ItemId": 265,
+        "ItemAmountMin": 300,
+        "ItemAmountMax": 500,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 5.0
+      },
+      {
+        "ItemId": 911,
+        "ItemAmountMin": 0,
+        "ItemAmountMax": 0,
+        "LevelRequirement": 0,
+        "CanBeRemovedFromDropTable": true,
+        "Weight": 5.0
       }
     ]
   },
@@ -10689,6 +11713,446 @@
         "CitadelDefenceCarpentryBoostModifier": 2,
         "CitadelPotionBoostModifier": 9,
         "CitadelOffenceArrowBoostModifier": 4
+      }
+    ]
+  },
+  "HolidayEventInfoDocument": {
+    "_id": "652f836ee34a26f270fffac4",
+    "Items": [
+      {
+        "EventType": 1,
+        "CurrencyItemId": 679,
+        "CurrencyGivenForMillionGold": 1.0,
+        "EnableCurrencyFromChests": true,
+        "EnableCurrencyFromBosses": true,
+        "DemiBossCurrencyDropAmountMin": 100000,
+        "DemiBossCurrencyDropAmountMax": 200000,
+        "DemiBossCurrencyDropChance": 10,
+        "KronosCurrencyDropAmountMin": 1000000,
+        "KronosCurrencyDropAmountMax": 2000000,
+        "KronosCurrencyDropChance": 10,
+        "StartMonth": 10,
+        "StartDay": 24,
+        "StartHour": 9,
+        "EndMonth": 11,
+        "EndDay": 7,
+        "EndHour": 9,
+        "InAppPurchases": [
+          {
+            "ProductId": "sku_holiday_event_currency_pack_small",
+            "RewardAmount": 12000000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_medium",
+            "RewardAmount": 32400000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_large",
+            "RewardAmount": 69600000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_gigantic",
+            "RewardAmount": 150000000
+          }
+        ],
+        "Milestones": [
+          {
+            "ExperienceBoost": 2
+          },
+          {
+            "CurrencyRequirement": 10000000.0,
+            "CurrencyRemovedEveryHour": 100000,
+            "ExperienceBoost": 4
+          },
+          {
+            "CurrencyRequirement": 50000000.0,
+            "CurrencyRemovedEveryHour": 500000,
+            "ExperienceBoost": 6
+          },
+          {
+            "CurrencyRequirement": 250000000.0,
+            "CurrencyRemovedEveryHour": 2500000,
+            "ExperienceBoost": 8
+          },
+          {
+            "CurrencyRequirement": 500000000.0,
+            "CurrencyRemovedEveryHour": 5000000,
+            "ExperienceBoost": 10
+          },
+          {
+            "CurrencyRequirement": 1000000000.0,
+            "CurrencyRemovedEveryHour": 10000000,
+            "ExperienceBoost": 12
+          },
+          {
+            "CurrencyRequirement": 2500000000.0,
+            "CurrencyRemovedEveryHour": 25000000,
+            "ExperienceBoost": 14
+          },
+          {
+            "CurrencyRequirement": 5000000000.0,
+            "CurrencyRemovedEveryHour": 50000000,
+            "ExperienceBoost": 16
+          },
+          {
+            "CurrencyRequirement": 7500000000.0,
+            "CurrencyRemovedEveryHour": 75000000,
+            "ExperienceBoost": 18
+          },
+          {
+            "CurrencyRequirement": 10000000000.0,
+            "CurrencyRemovedEveryHour": 100000000,
+            "ExperienceBoost": 20
+          }
+        ]
+      },
+      {
+        "EventType": 2,
+        "CurrencyItemId": 680,
+        "CurrencyGivenForMillionGold": 1.0,
+        "EnableCurrencyFromChests": true,
+        "EnableCurrencyFromBosses": true,
+        "DemiBossCurrencyDropAmountMin": 100000,
+        "DemiBossCurrencyDropAmountMax": 200000,
+        "DemiBossCurrencyDropChance": 10,
+        "KronosCurrencyDropAmountMin": 1000000,
+        "KronosCurrencyDropAmountMax": 2000000,
+        "KronosCurrencyDropChance": 10,
+        "StartMonth": 12,
+        "StartDay": 13,
+        "StartHour": 12,
+        "EndMonth": 12,
+        "EndDay": 31,
+        "EndHour": 12,
+        "InAppPurchases": [
+          {
+            "ProductId": "sku_holiday_event_currency_pack_small",
+            "RewardAmount": 12000000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_medium",
+            "RewardAmount": 32400000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_large",
+            "RewardAmount": 69600000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_gigantic",
+            "RewardAmount": 150000000
+          }
+        ],
+        "Milestones": [
+          {
+            "ExperienceBoost": 2
+          },
+          {
+            "CurrencyRequirement": 10000000.0,
+            "CurrencyRemovedEveryHour": 100000,
+            "ExperienceBoost": 4
+          },
+          {
+            "CurrencyRequirement": 50000000.0,
+            "CurrencyRemovedEveryHour": 500000,
+            "ExperienceBoost": 6
+          },
+          {
+            "CurrencyRequirement": 250000000.0,
+            "CurrencyRemovedEveryHour": 2500000,
+            "ExperienceBoost": 8
+          },
+          {
+            "CurrencyRequirement": 500000000.0,
+            "CurrencyRemovedEveryHour": 5000000,
+            "ExperienceBoost": 10
+          },
+          {
+            "CurrencyRequirement": 1000000000.0,
+            "CurrencyRemovedEveryHour": 10000000,
+            "ExperienceBoost": 12
+          },
+          {
+            "CurrencyRequirement": 2500000000.0,
+            "CurrencyRemovedEveryHour": 25000000,
+            "ExperienceBoost": 14
+          },
+          {
+            "CurrencyRequirement": 5000000000.0,
+            "CurrencyRemovedEveryHour": 50000000,
+            "ExperienceBoost": 16
+          },
+          {
+            "CurrencyRequirement": 7500000000.0,
+            "CurrencyRemovedEveryHour": 75000000,
+            "ExperienceBoost": 18
+          },
+          {
+            "CurrencyRequirement": 10000000000.0,
+            "CurrencyRemovedEveryHour": 100000000,
+            "ExperienceBoost": 20
+          }
+        ]
+      },
+      {
+        "EventType": 3,
+        "CurrencyItemId": 681,
+        "CurrencyGivenForMillionGold": 1.0,
+        "EnableCurrencyFromChests": true,
+        "EnableCurrencyFromBosses": true,
+        "DemiBossCurrencyDropAmountMin": 100000,
+        "DemiBossCurrencyDropAmountMax": 200000,
+        "DemiBossCurrencyDropChance": 10,
+        "KronosCurrencyDropAmountMin": 1000000,
+        "KronosCurrencyDropAmountMax": 2000000,
+        "KronosCurrencyDropChance": 10,
+        "StartMonth": 2,
+        "StartDay": 14,
+        "StartHour": 9,
+        "EndMonth": 2,
+        "EndDay": 28,
+        "EndHour": 9,
+        "InAppPurchases": [
+          {
+            "ProductId": "sku_holiday_event_currency_pack_small",
+            "RewardAmount": 12000000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_medium",
+            "RewardAmount": 32400000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_large",
+            "RewardAmount": 69600000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_gigantic",
+            "RewardAmount": 150000000
+          }
+        ],
+        "Milestones": [
+          {
+            "ExperienceBoost": 2
+          },
+          {
+            "CurrencyRequirement": 10000000.0,
+            "CurrencyRemovedEveryHour": 100000,
+            "ExperienceBoost": 4
+          },
+          {
+            "CurrencyRequirement": 50000000.0,
+            "CurrencyRemovedEveryHour": 500000,
+            "ExperienceBoost": 6
+          },
+          {
+            "CurrencyRequirement": 250000000.0,
+            "CurrencyRemovedEveryHour": 2500000,
+            "ExperienceBoost": 8
+          },
+          {
+            "CurrencyRequirement": 500000000.0,
+            "CurrencyRemovedEveryHour": 5000000,
+            "ExperienceBoost": 10
+          },
+          {
+            "CurrencyRequirement": 1000000000.0,
+            "CurrencyRemovedEveryHour": 10000000,
+            "ExperienceBoost": 12
+          },
+          {
+            "CurrencyRequirement": 2500000000.0,
+            "CurrencyRemovedEveryHour": 25000000,
+            "ExperienceBoost": 14
+          },
+          {
+            "CurrencyRequirement": 5000000000.0,
+            "CurrencyRemovedEveryHour": 50000000,
+            "ExperienceBoost": 16
+          },
+          {
+            "CurrencyRequirement": 7500000000.0,
+            "CurrencyRemovedEveryHour": 75000000,
+            "ExperienceBoost": 18
+          },
+          {
+            "CurrencyRequirement": 10000000000.0,
+            "CurrencyRemovedEveryHour": 100000000,
+            "ExperienceBoost": 20
+          }
+        ]
+      },
+      {
+        "EventType": 4,
+        "CurrencyItemId": 682,
+        "CurrencyGivenForMillionGold": 1.0,
+        "EnableCurrencyFromChests": true,
+        "EnableCurrencyFromBosses": true,
+        "DemiBossCurrencyDropAmountMin": 100000,
+        "DemiBossCurrencyDropAmountMax": 200000,
+        "DemiBossCurrencyDropChance": 10,
+        "KronosCurrencyDropAmountMin": 1000000,
+        "KronosCurrencyDropAmountMax": 2000000,
+        "KronosCurrencyDropChance": 10,
+        "StartMonth": 4,
+        "StartDay": 8,
+        "StartHour": 10,
+        "EndMonth": 4,
+        "EndDay": 15,
+        "EndHour": 10,
+        "InAppPurchases": [
+          {
+            "ProductId": "sku_holiday_event_currency_pack_small",
+            "RewardAmount": 12000000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_medium",
+            "RewardAmount": 32400000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_large",
+            "RewardAmount": 69600000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_gigantic",
+            "RewardAmount": 150000000
+          }
+        ],
+        "Milestones": [
+          {
+            "ExperienceBoost": 2
+          },
+          {
+            "CurrencyRequirement": 10000000.0,
+            "CurrencyRemovedEveryHour": 100000,
+            "ExperienceBoost": 4
+          },
+          {
+            "CurrencyRequirement": 50000000.0,
+            "CurrencyRemovedEveryHour": 500000,
+            "ExperienceBoost": 6
+          },
+          {
+            "CurrencyRequirement": 250000000.0,
+            "CurrencyRemovedEveryHour": 2500000,
+            "ExperienceBoost": 8
+          },
+          {
+            "CurrencyRequirement": 500000000.0,
+            "CurrencyRemovedEveryHour": 5000000,
+            "ExperienceBoost": 10
+          },
+          {
+            "CurrencyRequirement": 1000000000.0,
+            "CurrencyRemovedEveryHour": 10000000,
+            "ExperienceBoost": 12
+          },
+          {
+            "CurrencyRequirement": 2500000000.0,
+            "CurrencyRemovedEveryHour": 25000000,
+            "ExperienceBoost": 14
+          },
+          {
+            "CurrencyRequirement": 5000000000.0,
+            "CurrencyRemovedEveryHour": 50000000,
+            "ExperienceBoost": 16
+          },
+          {
+            "CurrencyRequirement": 7500000000.0,
+            "CurrencyRemovedEveryHour": 75000000,
+            "ExperienceBoost": 18
+          },
+          {
+            "CurrencyRequirement": 10000000000.0,
+            "CurrencyRemovedEveryHour": 100000000,
+            "ExperienceBoost": 20
+          }
+        ]
+      },
+      {
+        "EventType": 5,
+        "CurrencyItemId": 892,
+        "CurrencyGivenForMillionGold": 1.0,
+        "EnableCurrencyFromChests": true,
+        "EnableCurrencyFromBosses": true,
+        "DemiBossCurrencyDropAmountMin": 100000,
+        "DemiBossCurrencyDropAmountMax": 200000,
+        "DemiBossCurrencyDropChance": 10,
+        "KronosCurrencyDropAmountMin": 1000000,
+        "KronosCurrencyDropAmountMax": 2000000,
+        "KronosCurrencyDropChance": 10,
+        "StartMonth": 7,
+        "StartDay": 25,
+        "StartHour": 8,
+        "EndMonth": 8,
+        "EndDay": 8,
+        "EndHour": 8,
+        "InAppPurchases": [
+          {
+            "ProductId": "sku_holiday_event_currency_pack_small",
+            "RewardAmount": 12000000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_medium",
+            "RewardAmount": 32400000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_large",
+            "RewardAmount": 69600000
+          },
+          {
+            "ProductId": "sku_holiday_event_currency_pack_gigantic",
+            "RewardAmount": 150000000
+          }
+        ],
+        "Milestones": [
+          {
+            "ExperienceBoost": 2
+          },
+          {
+            "CurrencyRequirement": 10000000.0,
+            "CurrencyRemovedEveryHour": 100000,
+            "ExperienceBoost": 4
+          },
+          {
+            "CurrencyRequirement": 50000000.0,
+            "CurrencyRemovedEveryHour": 500000,
+            "ExperienceBoost": 6
+          },
+          {
+            "CurrencyRequirement": 250000000.0,
+            "CurrencyRemovedEveryHour": 2500000,
+            "ExperienceBoost": 8
+          },
+          {
+            "CurrencyRequirement": 500000000.0,
+            "CurrencyRemovedEveryHour": 5000000,
+            "ExperienceBoost": 10
+          },
+          {
+            "CurrencyRequirement": 1000000000.0,
+            "CurrencyRemovedEveryHour": 10000000,
+            "ExperienceBoost": 12
+          },
+          {
+            "CurrencyRequirement": 2500000000.0,
+            "CurrencyRemovedEveryHour": 25000000,
+            "ExperienceBoost": 14
+          },
+          {
+            "CurrencyRequirement": 5000000000.0,
+            "CurrencyRemovedEveryHour": 50000000,
+            "ExperienceBoost": 16
+          },
+          {
+            "CurrencyRequirement": 7500000000.0,
+            "CurrencyRemovedEveryHour": 75000000,
+            "ExperienceBoost": 20
+          },
+          {
+            "CurrencyRequirement": 10000000000.0,
+            "CurrencyRemovedEveryHour": 100000000,
+            "ExperienceBoost": 25
+          }
+        ]
       }
     ]
   },
@@ -58557,636 +60021,6 @@
       }
     ]
   },
-  "ExterminatingInfo": {
-    "_id": "68e36f3c8a903b8ae09eb6d6",
-    "ExterminatingExperts": [
-      {
-        "_id": 0,
-        "NameLocKey": "eldric",
-        "DescriptionLocKey": "eldric_description",
-        "DifficultyLocKey": "very_easy",
-        "HealthLevelRequirement": 1,
-        "PointsPerAssignment": 5,
-        "Assignments": [
-          {
-            "MonsterName": "wolf",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 60,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "boar",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 60,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "bear",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 60,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "scorpion",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 60,
-            "Weight": 7
-          },
-          {
-            "MonsterName": "snake",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 60,
-            "Weight": 7
-          },
-          {
-            "MonsterName": "crocodile",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 50,
-            "Weight": 7
-          },
-          {
-            "MonsterName": "goblin",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 50,
-            "Weight": 6
-          },
-          {
-            "MonsterName": "cave_dweller",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 50,
-            "Weight": 6
-          },
-          {
-            "MonsterName": "orange_dragon",
-            "LevelRequirement": 1,
-            "MinAmount": 20,
-            "MaxAmount": 50,
-            "Weight": 5
-          }
-        ]
-      },
-      {
-        "_id": 1,
-        "NameLocKey": "morgana",
-        "DescriptionLocKey": "morgana_description",
-        "DifficultyLocKey": "easy",
-        "HealthLevelRequirement": 25,
-        "PointsPerAssignment": 10,
-        "Assignments": [
-          {
-            "MonsterName": "troll",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "wandering_warrior",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "druid",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "gorilla",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "giant",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "green_dragon",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "golem",
-            "LevelRequirement": 30,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          },
-          {
-            "MonsterName": "mammoth",
-            "LevelRequirement": 40,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          },
-          {
-            "MonsterName": "basilisk",
-            "LevelRequirement": 50,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          }
-        ]
-      },
-      {
-        "_id": 2,
-        "NameLocKey": "alaric",
-        "DescriptionLocKey": "alaric_description",
-        "DifficultyLocKey": "moderate",
-        "HealthLevelRequirement": 40,
-        "PointsPerAssignment": 15,
-        "Assignments": [
-          {
-            "MonsterName": "ghost",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "zombie",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "possessed_bear",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "witch",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "demon",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "red_dragon",
-            "LevelRequirement": 1,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "banshee",
-            "LevelRequirement": 60,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          },
-          {
-            "MonsterName": "gargoyle",
-            "LevelRequirement": 65,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          },
-          {
-            "MonsterName": "cockatrice",
-            "LevelRequirement": 70,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 4
-          }
-        ]
-      },
-      {
-        "_id": 3,
-        "NameLocKey": "thorne",
-        "DescriptionLocKey": "thorne_description",
-        "DifficultyLocKey": "medium",
-        "HealthLevelRequirement": 60,
-        "PointsPerAssignment": 20,
-        "Assignments": [
-          {
-            "MonsterName": "mad_wizard",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "vampire",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "werewolf",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "dark_wizard",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "cerberus",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "black_dragon",
-            "LevelRequirement": 1,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "roc",
-            "LevelRequirement": 75,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 3
-          },
-          {
-            "MonsterName": "dire_wolf",
-            "LevelRequirement": 79,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 3
-          },
-          {
-            "MonsterName": "behemoth",
-            "LevelRequirement": 83,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 3
-          },
-          {
-            "MonsterName": "wyvern",
-            "LevelRequirement": 87,
-            "MinAmount": 125,
-            "MaxAmount": 250,
-            "Weight": 3
-          }
-        ]
-      },
-      {
-        "_id": 4,
-        "NameLocKey": "sila",
-        "DescriptionLocKey": "sila_description",
-        "DifficultyLocKey": "hard",
-        "HealthLevelRequirement": 80,
-        "PointsPerAssignment": 30,
-        "Assignments": [
-          {
-            "MonsterName": "hydra",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "manticore",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "minotaur",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "centaur",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "necromancer",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "mutated_dragon",
-            "LevelRequirement": 1,
-            "MinAmount": 75,
-            "MaxAmount": 150,
-            "Weight": 10
-          },
-          {
-            "MonsterName": "drake",
-            "LevelRequirement": 91,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "naga",
-            "LevelRequirement": 95,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "kraken",
-            "LevelRequirement": 99,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "fury",
-            "LevelRequirement": 102,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "phoenix",
-            "LevelRequirement": 105,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "grimwark",
-            "LevelRequirement": 110,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          },
-          {
-            "MonsterName": "otherworldly_executioner",
-            "LevelRequirement": 115,
-            "MinAmount": 100,
-            "MaxAmount": 200,
-            "Weight": 2
-          }
-        ]
-      }
-    ],
-    "ShopUnlocks": [
-      {
-        "UnlockType": 1,
-        "PurchaseLimitScope": 0,
-        "Repeating": true,
-        "Cost": 30,
-        "HasToggle": false,
-        "AssociatedSetting": 0,
-        "NameLocKey": "cancel_assignment_title",
-        "DescriptionLocKey": "cancel_assignment_desc"
-      },
-      {
-        "UnlockType": 5,
-        "PurchaseLimitScope": 1,
-        "Repeating": true,
-        "Cost": 100,
-        "HasToggle": false,
-        "AssociatedSetting": 6,
-        "NameLocKey": "supply_crate",
-        "DescriptionLocKey": ""
-      },
-      {
-        "UnlockType": 2,
-        "PurchaseLimitScope": 0,
-        "Repeating": false,
-        "Cost": 500,
-        "HasToggle": true,
-        "AssociatedSetting": 3,
-        "NameLocKey": "exterminating_auto_complete",
-        "DescriptionLocKey": "exterminating_auto_complete_desc"
-      },
-      {
-        "UnlockType": 3,
-        "PurchaseLimitScope": 0,
-        "Repeating": false,
-        "Cost": 5000,
-        "HasToggle": true,
-        "AssociatedSetting": 4,
-        "NameLocKey": "exterminating_boss_extension",
-        "DescriptionLocKey": "exterminating_boss_extension_desc"
-      },
-      {
-        "UnlockType": 4,
-        "PurchaseLimitScope": 0,
-        "Repeating": false,
-        "Cost": 25000,
-        "HasToggle": false,
-        "AssociatedSetting": 6,
-        "NameLocKey": "exterminating_bloodmoon_equipment",
-        "DescriptionLocKey": "exterminating_bloodmoon_equipment_description"
-      }
-    ],
-    "SupplyCrateLoot": [
-      {
-        "ItemId": 130,
-        "ItemAmountMin": 10,
-        "ItemAmountMax": 20,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 131,
-        "ItemAmountMin": 10,
-        "ItemAmountMax": 20,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 400,
-        "ItemAmountMin": 10,
-        "ItemAmountMax": 20,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 402,
-        "ItemAmountMin": 5,
-        "ItemAmountMax": 10,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 404,
-        "ItemAmountMin": 5,
-        "ItemAmountMax": 10,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 5.0
-      },
-      {
-        "ItemId": 247,
-        "ItemAmountMin": 50,
-        "ItemAmountMax": 100,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 248,
-        "ItemAmountMin": 50,
-        "ItemAmountMax": 100,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 249,
-        "ItemAmountMin": 50,
-        "ItemAmountMax": 100,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 5.0
-      },
-      {
-        "ItemId": 263,
-        "ItemAmountMin": 500,
-        "ItemAmountMax": 1000,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 264,
-        "ItemAmountMin": 400,
-        "ItemAmountMax": 800,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 10.0
-      },
-      {
-        "ItemId": 265,
-        "ItemAmountMin": 300,
-        "ItemAmountMax": 500,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 5.0
-      },
-      {
-        "ItemId": 911,
-        "ItemAmountMin": 0,
-        "ItemAmountMax": 0,
-        "LevelRequirement": 0,
-        "CanBeRemovedFromDropTable": true,
-        "Weight": 5.0
-      }
-    ]
-  },
-  "PotionData": {
-    "_id": "63636307dc1854b598540a55",
-    "Items": [
-      {
-        "PotionId": 0,
-        "PotionType": 1,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 10,
-        "Duration": 601
-      },
-      {
-        "PotionId": 1,
-        "PotionType": 2,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 5,
-        "Duration": 300
-      },
-      {
-        "PotionId": 2,
-        "PotionType": 3,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 40,
-        "Duration": 600
-      },
-      {
-        "PotionId": 3,
-        "PotionType": 4,
-        "ChanceOfTriggeringEffect": 10,
-        "EffectStrengthPercentage": 0,
-        "Duration": 180
-      },
-      {
-        "PotionId": 4,
-        "PotionType": 5,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 10,
-        "Duration": 600
-      },
-      {
-        "PotionId": 5,
-        "PotionType": 6,
-        "ChanceOfTriggeringEffect": 15,
-        "EffectStrengthPercentage": 0,
-        "Duration": 900
-      },
-      {
-        "PotionId": 6,
-        "PotionType": 7,
-        "ChanceOfTriggeringEffect": 25,
-        "EffectStrengthPercentage": 105,
-        "Duration": 600
-      },
-      {
-        "PotionId": 7,
-        "PotionType": 8,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 20,
-        "Duration": 600
-      },
-      {
-        "PotionId": 8,
-        "PotionType": 9,
-        "ChanceOfTriggeringEffect": 0,
-        "EffectStrengthPercentage": 50,
-        "Duration": 600
-      },
-      {
-        "PotionId": 9,
-        "PotionType": 10,
-        "ChanceOfTriggeringEffect": 100,
-        "EffectStrengthPercentage": 75,
-        "Duration": 60
-      }
-    ]
-  },
   "Quests": {
     "Smithing": [
       {
@@ -68910,840 +69744,6 @@
           }
         ],
         "PetChancePercentage": 0.4
-      }
-    ]
-  },
-  "Upgrades": {
-    "_id": "624014482729405d901303dd",
-    "Items": [
-      {
-        "Tiers": 5,
-        "TierNameLocKeys": [
-          "cardboard_box",
-          "tent",
-          "van_down_by_the_river",
-          "small_cabin",
-          "house"
-        ],
-        "TierDescriptionLocKeys": [
-          "cardboard_box_description",
-          "tent_description",
-          "van_down_by_the_river_description",
-          "small_cabin_description",
-          "house_description"
-        ],
-        "TierUnlocks": [
-          5,
-          10,
-          15,
-          20,
-          25
-        ],
-        "Costs": [
-          100000,
-          500000,
-          2500000,
-          10000000,
-          25000000
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 9,
-            "Requirements": [
-              30,
-              50,
-              70,
-              80,
-              90
-            ]
-          },
-          {
-            "Skill": 13,
-            "Requirements": [
-              20,
-              40,
-              60,
-              70,
-              80
-            ]
-          }
-        ]
-      },
-      {
-        "Type": 1,
-        "CanPurchaseInBulk": true,
-        "Costs": [
-          5000
-        ]
-      },
-      {
-        "Type": 2,
-        "Tiers": 5,
-        "TierUnlocks": [
-          20,
-          40,
-          60,
-          80,
-          100
-        ],
-        "Costs": [
-          100000,
-          250000,
-          1000000,
-          5000000,
-          20000000
-        ]
-      },
-      {
-        "Type": 3,
-        "Tiers": 5,
-        "TierUnlocks": [
-          20,
-          40,
-          60,
-          80,
-          100
-        ],
-        "Costs": [
-          100000,
-          250000,
-          1000000,
-          5000000,
-          20000000
-        ]
-      },
-      {
-        "Type": 4,
-        "Tiers": 1,
-        "Costs": [
-          100000
-        ]
-      },
-      {
-        "Type": 5,
-        "Tiers": 1,
-        "Costs": [
-          250000
-        ]
-      },
-      {
-        "Type": 6,
-        "Tiers": 6,
-        "TierUnlocks": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "Costs": [
-          200000,
-          1000000,
-          3000000,
-          5000000,
-          10000000,
-          25000000
-        ]
-      },
-      {
-        "Type": 7,
-        "Tiers": 1,
-        "Costs": [
-          50000
-        ]
-      },
-      {
-        "Type": 8,
-        "Tiers": 5,
-        "TierUnlocks": [
-          10,
-          20,
-          30,
-          40,
-          50
-        ],
-        "Costs": [
-          250000,
-          1000000,
-          3000000,
-          10000000,
-          25000000
-        ]
-      },
-      {
-        "Type": 9,
-        "Tiers": 5,
-        "TierUnlocks": [
-          10,
-          20,
-          30,
-          40,
-          50
-        ],
-        "Costs": [
-          200000,
-          600000,
-          1500000,
-          5000000,
-          10000000
-        ]
-      },
-      {
-        "Type": 10,
-        "Tiers": 3,
-        "TierUnlocks": [
-          10,
-          20,
-          30
-        ],
-        "Costs": [
-          750000,
-          2500000,
-          10000000
-        ]
-      },
-      {
-        "Type": 11,
-        "Tiers": 5,
-        "TierUnlocks": [
-          10,
-          20,
-          30,
-          40,
-          50
-        ],
-        "Costs": [
-          1000000,
-          2000000,
-          4000000,
-          7500000,
-          10000000
-        ]
-      },
-      {
-        "Type": 12,
-        "Tiers": 3,
-        "TierUnlocks": [
-          30,
-          60,
-          100
-        ],
-        "Costs": [
-          500000,
-          1000000,
-          2000000
-        ]
-      },
-      {
-        "Type": 13,
-        "Tiers": 6,
-        "TierUnlocks": [
-          15,
-          30,
-          45,
-          60,
-          75,
-          90
-        ],
-        "Costs": [
-          150000,
-          750000,
-          2500000,
-          7500000,
-          20000000,
-          50000000
-        ]
-      },
-      {
-        "Type": 14,
-        "Discontinued": true,
-        "Tiers": 4,
-        "TierUnlocks": [
-          5,
-          10,
-          15,
-          20
-        ],
-        "Costs": [
-          500000,
-          1500000,
-          5000000,
-          10000000
-        ],
-        "ItemCosts": [],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 15,
-        "Tiers": 1,
-        "TierUnlocks": [
-          20
-        ],
-        "Costs": [
-          50000
-        ]
-      },
-      {
-        "Type": 24,
-        "Tiers": 1,
-        "TierUnlocks": [
-          8
-        ],
-        "Costs": [
-          75000
-        ],
-        "CustomRequirementLocKey": "",
-        "DisabledForIronmen": true
-      },
-      {
-        "Type": 25,
-        "Tiers": 1,
-        "Costs": [
-          25000000
-        ]
-      },
-      {
-        "Type": 26,
-        "Tiers": 6,
-        "TierNameLocKeys": [
-          "toolbelt_upgrade_tier_1_name",
-          "toolbelt_upgrade_tier_2_name",
-          "toolbelt_upgrade_tier_3_name",
-          "toolbelt_upgrade_tier_4_name",
-          "toolbelt_upgrade_tier_5_name",
-          "toolbelt_upgrade_tier_6_name"
-        ],
-        "TierDescriptionLocKeys": [
-          "toolbelt_upgrade_tier_1_desc",
-          "toolbelt_upgrade_tier_2_desc",
-          "toolbelt_upgrade_tier_3_desc",
-          "toolbelt_upgrade_tier_4_desc",
-          "toolbelt_upgrade_tier_5_desc",
-          "toolbelt_upgrade_tier_6_desc"
-        ],
-        "TierUnlocks": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "Costs": [
-          500000,
-          1000000,
-          2000000,
-          3000000,
-          4000000,
-          5000000
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 11,
-            "Requirements": [
-              0,
-              0,
-              70,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 7,
-            "Requirements": [
-              0,
-              0,
-              70,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 10,
-            "Requirements": [
-              70,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 13,
-            "Requirements": [
-              0,
-              70,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 8,
-            "Requirements": [
-              70,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 16,
-            "Requirements": [
-              0,
-              0,
-              0,
-              70,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 17,
-            "Requirements": [
-              0,
-              0,
-              0,
-              70,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 19,
-            "Requirements": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              70
-            ]
-          },
-          {
-            "Skill": 12,
-            "Requirements": [
-              0,
-              70,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          {
-            "Skill": 15,
-            "Requirements": [
-              0,
-              0,
-              0,
-              0,
-              70,
-              0
-            ]
-          },
-          {
-            "Skill": 9,
-            "Requirements": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              70
-            ]
-          },
-          {
-            "Skill": 14,
-            "Requirements": [
-              0,
-              0,
-              0,
-              0,
-              70,
-              0
-            ]
-          }
-        ]
-      },
-      {
-        "Type": 27,
-        "Tiers": 1,
-        "Costs": [
-          3000000
-        ]
-      },
-      {
-        "Type": 28,
-        "Tiers": 1,
-        "Costs": [
-          5000000
-        ]
-      },
-      {
-        "Type": 29,
-        "Tiers": 1,
-        "Costs": [
-          5000000
-        ]
-      },
-      {
-        "Type": 34,
-        "Tiers": 15,
-        "CanPurchaseInBulk": true,
-        "TierUnlocks": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "Costs": [
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000,
-          1000000
-        ]
-      },
-      {
-        "Type": 36,
-        "Costs": [
-          15000000
-        ],
-        "ItemCosts": [],
-        "CustomRequirementLocKey": "upgrade_kronos_protection_requirement"
-      },
-      {
-        "Type": 39,
-        "ItemCosts": [
-          {
-            "Item": 692,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 40,
-        "ItemCosts": [
-          {
-            "Item": 693,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 41,
-        "ItemCosts": [
-          {
-            "Item": 694,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 10,
-            "Requirements": [
-              95
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 42,
-        "ItemCosts": [
-          {
-            "Item": 695,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 8,
-            "Requirements": [
-              95
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 43,
-        "ItemCosts": [
-          {
-            "Item": 696,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 7,
-            "Requirements": [
-              90
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 44,
-        "ItemCosts": [
-          {
-            "Item": 697,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 7,
-            "Requirements": [
-              70
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 45,
-        "ItemCosts": [
-          {
-            "Item": 698,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 19,
-            "Requirements": [
-              70
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 46,
-        "ItemCosts": [
-          {
-            "Item": 699,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 19,
-            "Requirements": [
-              70
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 47,
-        "Tiers": 1,
-        "TierUnlocks": [
-          25
-        ],
-        "Costs": [
-          15000000
-        ],
-        "ItemCosts": [],
-        "CustomRequirementLocKey": "",
-        "DisabledForIronmen": true
-      },
-      {
-        "Type": 48,
-        "Tiers": 1,
-        "Costs": [
-          10000000
-        ],
-        "ItemCosts": [],
-        "SkillRequirements": [
-          {
-            "Skill": 11,
-            "Requirements": [
-              90
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 49,
-        "TierUnlocks": [
-          10
-        ],
-        "ItemCosts": [
-          {
-            "Item": 745,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 8,
-            "Requirements": [
-              75
-            ]
-          },
-          {
-            "Skill": 9,
-            "Requirements": [
-              75
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 50,
-        "TierUnlocks": [
-          10
-        ],
-        "ItemCosts": [
-          {
-            "Item": 746,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 53,
-        "Tiers": 1,
-        "TierUnlocks": [
-          10
-        ],
-        "Costs": [
-          10000000
-        ],
-        "ItemCosts": [
-          {
-            "Item": 836,
-            "Amount": 1
-          },
-          {
-            "Item": 837,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 7,
-            "Requirements": [
-              90
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 55,
-        "Tiers": 1,
-        "ItemCosts": [
-          {
-            "Item": 881,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 56,
-        "Tiers": 1,
-        "TierUnlocks": [
-          10
-        ],
-        "ItemCosts": [
-          {
-            "Item": 884,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 57,
-        "Tiers": 1,
-        "TierUnlocks": [
-          50
-        ],
-        "Costs": [
-          25000000
-        ],
-        "ItemCosts": [
-          {
-            "Item": 890,
-            "Amount": 1
-          }
-        ],
-        "SkillRequirements": [
-          {
-            "Skill": 10,
-            "Requirements": [
-              100
-            ]
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 58,
-        "Tiers": 1,
-        "Costs": [
-          75000000
-        ],
-        "ItemCosts": [
-          {
-            "Item": 891,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
-      },
-      {
-        "Type": 59,
-        "TierUnlocks": [
-          30
-        ],
-        "ItemCosts": [
-          {
-            "Item": 899,
-            "Amount": 1
-          }
-        ],
-        "CustomRequirementLocKey": ""
       }
     ]
   },
