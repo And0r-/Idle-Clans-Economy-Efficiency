@@ -375,9 +375,9 @@ def load_and_calculate_data(collect_missing_translations=False):
             tasks_skipped = total_tasks_attempted - tasks_calculated
             success_rate = (tasks_calculated / total_tasks_attempted * 100) if total_tasks_attempted > 0 else 0
 
-            # Validate data quality - require at least 75% success rate
-            # (Some tasks have no item_reward or invalid base_time, which is normal)
-            if success_rate < 75:
+            # Validate data quality - require at least 40% success rate
+            # (Many tasks have no item_reward or invalid base_time, which is normal for combat/special tasks)
+            if success_rate < 40:
                 health_status['healthy'] = False
                 health_status['message'] = f"Low data quality: {success_rate:.1f}% success rate ({tasks_skipped}/{total_tasks_attempted} tasks skipped)"
                 health_status['tasks_calculated'] = tasks_calculated
